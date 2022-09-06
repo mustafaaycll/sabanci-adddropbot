@@ -58,7 +58,7 @@ class MainWindow(QMainWindow):
         self.usernameField.setText(GB.USERNAME)
         self.passwordField.setText(GB.HIDDENPASSWORD)
         self.getBackButton.clicked.connect(self.loadMainPage)
-        self.visibilityButton.setIcon(QIcon("visibility_on.png"))
+        self.visibilityButton.setIcon(QIcon("assets/visibility_on.png"))
         self.visibilityButton.clicked.connect(self.visibilityToggle)
         self.enrollButton.clicked.connect(self.automate)
         self.clearAllButton.clicked.connect(self.clearCRNEdits)
@@ -80,12 +80,12 @@ class MainWindow(QMainWindow):
         if GB.PASSWORDVISIBILITY == True:
             GB.PASSWORDVISIBILITY = False
             self.passwordField.setText(GB.PASSWORD)
-            self.visibilityButton.setIcon(QIcon("visibility_off.png"))
+            self.visibilityButton.setIcon(QIcon("assets/visibility_off.png"))
 
         else:
             GB.PASSWORDVISIBILITY = True
             self.passwordField.setText(GB.HIDDENPASSWORD)
-            self.visibilityButton.setIcon(QIcon("visibility_on.png"))
+            self.visibilityButton.setIcon(QIcon("assets/visibility_on.png"))
 
 
     def clearCRNEdits(self):
