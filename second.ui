@@ -11,13 +11,13 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>subot - Automated Course Registerer</string>
   </property>
   <property name="unifiedTitleAndToolBarOnMac">
    <bool>true</bool>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="image">
+   <widget class="QLabel" name="imageSecond">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -28,9 +28,6 @@
     </property>
     <property name="text">
      <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>assets/sabanci.png</pixmap>
     </property>
    </widget>
    <widget class="Line" name="seperator">
@@ -157,28 +154,28 @@
         <enum>QLayout::SetDefaultConstraint</enum>
        </property>
        <item row="3" column="2">
-        <widget class="QLineEdit" name="crn11">
+        <widget class="QLineEdit" name="tab1crn11">
          <property name="maxLength">
           <number>5</number>
          </property>
         </widget>
        </item>
        <item row="4" column="0">
-        <widget class="QLineEdit" name="crn13">
+        <widget class="QLineEdit" name="tab1crn13">
          <property name="maxLength">
           <number>5</number>
          </property>
         </widget>
        </item>
        <item row="2" column="3">
-        <widget class="QLineEdit" name="crn8">
+        <widget class="QLineEdit" name="tab1crn8">
          <property name="maxLength">
           <number>5</number>
          </property>
         </widget>
        </item>
        <item row="1" column="0">
-        <widget class="QLineEdit" name="crn1">
+        <widget class="QLineEdit" name="tab1crn1">
          <property name="inputMask">
           <string/>
          </property>
@@ -188,63 +185,63 @@
         </widget>
        </item>
        <item row="2" column="1">
-        <widget class="QLineEdit" name="crn6">
+        <widget class="QLineEdit" name="tab1crn6">
          <property name="maxLength">
           <number>5</number>
          </property>
         </widget>
        </item>
        <item row="2" column="2">
-        <widget class="QLineEdit" name="crn7">
+        <widget class="QLineEdit" name="tab1crn7">
          <property name="maxLength">
           <number>5</number>
          </property>
         </widget>
        </item>
        <item row="1" column="1">
-        <widget class="QLineEdit" name="crn2">
+        <widget class="QLineEdit" name="tab1crn2">
          <property name="maxLength">
           <number>5</number>
          </property>
         </widget>
        </item>
        <item row="1" column="3">
-        <widget class="QLineEdit" name="crn4">
+        <widget class="QLineEdit" name="tab1crn4">
          <property name="maxLength">
           <number>5</number>
          </property>
         </widget>
        </item>
        <item row="4" column="1">
-        <widget class="QLineEdit" name="crn14">
+        <widget class="QLineEdit" name="tab1crn14">
          <property name="maxLength">
           <number>5</number>
          </property>
         </widget>
        </item>
        <item row="3" column="0">
-        <widget class="QLineEdit" name="crn9">
+        <widget class="QLineEdit" name="tab1crn9">
          <property name="maxLength">
           <number>5</number>
          </property>
         </widget>
        </item>
        <item row="4" column="2">
-        <widget class="QLineEdit" name="crn15">
+        <widget class="QLineEdit" name="tab1crn15">
          <property name="maxLength">
           <number>5</number>
          </property>
         </widget>
        </item>
        <item row="4" column="3">
-        <widget class="QLineEdit" name="crn16">
+        <widget class="QLineEdit" name="tab1crn16">
          <property name="maxLength">
           <number>5</number>
          </property>
         </widget>
        </item>
        <item row="2" column="0">
-        <widget class="QLineEdit" name="crn5">
+        <widget class="QLineEdit" name="tab1crn5">
          <property name="maxLength">
           <number>5</number>
          </property>
@@ -261,21 +258,21 @@
         </widget>
        </item>
        <item row="3" column="1">
-        <widget class="QLineEdit" name="crn10">
+        <widget class="QLineEdit" name="tab1crn10">
          <property name="maxLength">
           <number>5</number>
          </property>
         </widget>
        </item>
        <item row="1" column="2">
-        <widget class="QLineEdit" name="crn3">
+        <widget class="QLineEdit" name="tab1crn3">
          <property name="maxLength">
           <number>5</number>
          </property>
         </widget>
        </item>
        <item row="3" column="3">
-        <widget class="QLineEdit" name="crn12">
+        <widget class="QLineEdit" name="tab1crn12">
          <property name="maxLength">
           <number>5</number>
          </property>
@@ -329,7 +326,11 @@ in this CRN:</string>
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit_9"/>
+          <widget class="QLineEdit" name="checkCRNEdit">
+           <property name="maxLength">
+            <number>5</number>
+           </property>
+          </widget>
          </item>
         </layout>
        </item>
@@ -344,35 +345,70 @@ below</string>
        <item>
         <layout class="QGridLayout" name="gridLayout_2">
          <item row="0" column="2">
-          <widget class="QLineEdit" name="lineEdit_3"/>
+          <widget class="QLineEdit" name="tab2crn3">
+           <property name="maxLength">
+            <number>5</number>
+           </property>
+          </widget>
          </item>
          <item row="0" column="0">
-          <widget class="QLineEdit" name="lineEdit"/>
+          <widget class="QLineEdit" name="tab2crn1">
+           <property name="maxLength">
+            <number>5</number>
+           </property>
+          </widget>
          </item>
          <item row="0" column="3">
-          <widget class="QLineEdit" name="lineEdit_4"/>
+          <widget class="QLineEdit" name="tab2crn4">
+           <property name="maxLength">
+            <number>5</number>
+           </property>
+          </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QLineEdit" name="lineEdit_2"/>
+          <widget class="QLineEdit" name="tab2crn2">
+           <property name="maxLength">
+            <number>5</number>
+           </property>
+          </widget>
          </item>
          <item row="1" column="0">
-          <widget class="QLineEdit" name="lineEdit_5"/>
+          <widget class="QLineEdit" name="tab2crn5">
+           <property name="maxLength">
+            <number>5</number>
+           </property>
+          </widget>
          </item>
          <item row="1" column="1">
-          <widget class="QLineEdit" name="lineEdit_6"/>
+          <widget class="QLineEdit" name="tab2crn6">
+           <property name="maxLength">
+            <number>5</number>
+           </property>
+          </widget>
          </item>
          <item row="1" column="2">
-          <widget class="QLineEdit" name="lineEdit_7"/>
+          <widget class="QLineEdit" name="tab2crn7">
+           <property name="maxLength">
+            <number>5</number>
+           </property>
+          </widget>
          </item>
          <item row="1" column="3">
-          <widget class="QLineEdit" name="lineEdit_8"/>
+          <widget class="QLineEdit" name="tab2crn8">
+           <property name="maxLength">
+            <number>5</number>
+           </property>
+          </widget>
          </item>
         </layout>
        </item>
        <item>
         <widget class="QPushButton" name="conditionalEnrollButton">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
          <property name="text">
-          <string>PushButton</string>
+          <string>Start</string>
          </property>
         </widget>
        </item>

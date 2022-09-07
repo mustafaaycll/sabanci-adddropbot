@@ -11,13 +11,13 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>subot - Automated Course Registerer</string>
   </property>
   <property name="unifiedTitleAndToolBarOnMac">
    <bool>true</bool>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="image">
+   <widget class="QLabel" name="imageFirst">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -28,9 +28,6 @@
     </property>
     <property name="text">
      <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>assets/sabanci.png</pixmap>
     </property>
    </widget>
    <widget class="Line" name="seperator">
@@ -108,30 +105,215 @@
      </item>
     </layout>
    </widget>
-   <widget class="QLabel" name="infoLabel">
+   <widget class="QToolBox" name="toolBox">
     <property name="geometry">
      <rect>
       <x>280</x>
       <y>10</y>
       <width>251</width>
-      <height>221</height>
+      <height>231</height>
      </rect>
     </property>
-    <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;Automated Course Registerer for Sabanci University was developed by Mustafa Ahmet Yücel. In order to view the source code, click &lt;a href=&quot;www.google.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#007af4;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;. Make sure your credentials are entered correctly, clicking save button will redirect you to another page.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <property name="cursor">
+     <cursorShape>ArrowCursor</cursorShape>
     </property>
-    <property name="alignment">
-     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
     </property>
-    <property name="wordWrap">
-     <bool>true</bool>
+    <property name="autoFillBackground">
+     <bool>false</bool>
     </property>
-    <property name="openExternalLinks">
-     <bool>true</bool>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
     </property>
-    <property name="textInteractionFlags">
-     <set>Qt::TextBrowserInteraction</set>
+    <property name="currentIndex">
+     <number>0</number>
     </property>
+    <property name="tabSpacing">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="page">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>251</width>
+       <height>159</height>
+      </rect>
+     </property>
+     <attribute name="label">
+      <string>Usage</string>
+     </attribute>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QScrollArea" name="scrollArea">
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOn</enum>
+        </property>
+        <property name="widgetResizable">
+         <bool>true</bool>
+        </property>
+        <widget class="QWidget" name="scrollAreaWidgetContents">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>225</width>
+           <height>536</height>
+          </rect>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string>&lt;ol&gt;
+	&lt;li&gt;Make sure you have &lt;a href=&quot;https://www.google.com/intl/tr_tr/chrome/thank-you.html?statcb=0&amp;amp;installdataindex=empty&amp;amp;defaultbrowser=0&quot;&gt;Google Chrome&lt;/a&gt;&lt;a href=&quot;https://www.google.com/intl/tr_tr/chrome/&quot;&gt; &lt;/a&gt;installed on your Mac&lt;/li&gt;
+	&lt;li&gt;Provide SUCourse username and password, proceed by clicking save button.&lt;/li&gt;
+	&lt;li&gt;In the next screen, select desired mode:
+	&lt;ul&gt;
+		&lt;li&gt;&lt;strong&gt;Standard&lt;/strong&gt;: bot will register all the CRNs you provide&lt;/li&gt;
+		&lt;li&gt;&lt;strong&gt;Conditional&lt;/strong&gt;: bot will register all the CRNs you provide as long as there exists at least 1 available seat in the class with the specific CRN&lt;/li&gt;
+	&lt;/ul&gt;
+	&lt;/li&gt;
+	&lt;li&gt;Proceed by clicking the start button, this will trigger the automation&lt;/li&gt;
+	&lt;li&gt;After registering finishes, bot will open the page where you can view successfully added courses in BannerWeb&lt;/li&gt;
+	&lt;li&gt;After a short period of time, chrome will close itself. You can also close it safely.&lt;/li&gt;
+&lt;/ol&gt;
+</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+            <property name="openExternalLinks">
+             <bool>true</bool>
+            </property>
+            <property name="textInteractionFlags">
+             <set>Qt::TextBrowserInteraction</set>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="page_2">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>251</width>
+       <height>159</height>
+      </rect>
+     </property>
+     <attribute name="label">
+      <string>Privacy</string>
+     </attribute>
+     <layout class="QVBoxLayout" name="verticalLayout_3">
+      <item>
+       <widget class="QScrollArea" name="scrollArea_2">
+        <property name="widgetResizable">
+         <bool>true</bool>
+        </property>
+        <widget class="QWidget" name="scrollAreaWidgetContents_2">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>225</width>
+           <height>152</height>
+          </rect>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_4">
+          <item>
+           <widget class="QLabel" name="label_2">
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;No personal information is collected or stored. Bot uses a another instance of Google Chrome, meaning that it also cannot read your cookies, passwords, addresses etc. stored in your actual Google Chrome account and application.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="page_3">
+     <attribute name="label">
+      <string>About</string>
+     </attribute>
+     <layout class="QVBoxLayout" name="verticalLayout_5">
+      <item>
+       <widget class="QScrollArea" name="scrollArea_3">
+        <property name="widgetResizable">
+         <bool>true</bool>
+        </property>
+        <widget class="QWidget" name="scrollAreaWidgetContents_3">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>225</width>
+           <height>336</height>
+          </rect>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_6">
+          <item>
+           <widget class="QLabel" name="label_3">
+            <property name="lineWidth">
+             <number>1</number>
+            </property>
+            <property name="text">
+             <string>&lt;p style=&quot;margin-left:0px; margin-right:0px&quot;&gt;Developed by Mustafa Y&amp;uuml;cel&lt;/p&gt;
+
+&lt;ul&gt;
+	&lt;li style=&quot;margin-left: 0px; margin-right: 0px;&quot;&gt;&lt;a href=&quot;https://github.com/mustafaaycll&quot;&gt;Click&lt;/a&gt; for the GitHub profile&lt;/li&gt;
+	&lt;li style=&quot;margin-left: 0px; margin-right: 0px;&quot;&gt;&lt;a href=&quot;https://github.com/mustafaaycll/sabanci-adddropbot&quot;&gt;Click&lt;/a&gt; for the GitHub repository&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p style=&quot;margin-left:0px; margin-right:0px&quot;&gt;Developed with:&lt;/p&gt;
+
+&lt;ul&gt;
+	&lt;li style=&quot;margin-left: 0px; margin-right: 0px;&quot;&gt;&lt;a href=&quot;https://www.python.org/&quot;&gt;Python&lt;/a&gt;&lt;/li&gt;
+	&lt;li style=&quot;margin-left: 0px; margin-right: 0px;&quot;&gt;&lt;a href=&quot;https://pypi.org/project/PyQt5/&quot;&gt;PyQt5&lt;/a&gt; Library&lt;/li&gt;
+	&lt;li style=&quot;margin-left: 0px; margin-right: 0px;&quot;&gt;&lt;a href=&quot;https://www.qt.io/product/development-tools&quot;&gt;Qt Creator&lt;/a&gt;&lt;/li&gt;
+	&lt;li style=&quot;margin-left: 0px; margin-right: 0px;&quot;&gt;&lt;a href=&quot;https://www.selenium.dev/&quot;&gt;Selenium&lt;/a&gt; Library&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p style=&quot;margin-left:0px; margin-right:0px&quot;&gt;Developed for:&lt;/p&gt;
+
+&lt;ul&gt;
+	&lt;li style=&quot;margin-left: 0px; margin-right: 0px;&quot;&gt;MacOS&lt;/li&gt;
+	&lt;li style=&quot;margin-left: 0px; margin-right: 0px;&quot;&gt;Linux &lt;em&gt;(should work but not tested)&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p style=&quot;margin-left:0px; margin-right:0px&quot;&gt;Feel free to use the code to develop MS Windows version&lt;/p&gt;
+</string>
+            </property>
+            <property name="scaledContents">
+             <bool>false</bool>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+            <property name="openExternalLinks">
+             <bool>true</bool>
+            </property>
+            <property name="textInteractionFlags">
+             <set>Qt::TextBrowserInteraction</set>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </item>
+     </layout>
+    </widget>
    </widget>
   </widget>
  </widget>

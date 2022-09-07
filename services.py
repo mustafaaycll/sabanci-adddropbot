@@ -1,4 +1,6 @@
 from datetime import date
+import os
+import sys
 import time
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
@@ -7,6 +9,15 @@ from selenium.webdriver.support import expected_conditions as EC
 import globalVars as GB
 
 class bannerWebServices():
+    def resource_path(relative_path: str) -> str:
+        try:
+            base_path = sys._MEIPASS
+
+        except Exception:
+            base_path = os.path.dirname(__file__)
+
+        return os.path.join(base_path, relative_path)
+
     def identifyTerm():
         currentTime = str(date.today())
         elements = currentTime.split("-")
@@ -19,14 +30,14 @@ class bannerWebServices():
             GB.CURRENTTERM = str(int(elements[0])-1) + "02"
 
 
-    def login(browser, username, password):
+    def login(browser):
         unamePromt = browser.find_element(By.XPATH, '//*[@id="UserID"]')
         passPromt = browser.find_element(By.XPATH, '//*[@id="PIN"]')
         loginButton = browser.find_element(By.XPATH, '/html/body/div[3]/form/p/input')
         unamePromt.click()
-        unamePromt.send_keys(username)
+        unamePromt.send_keys(GB.USERNAME)
         passPromt.click()
-        passPromt.send_keys(password)
+        passPromt.send_keys(GB.PASSWORD)
         loginButton.click()
 
 
@@ -68,7 +79,7 @@ class bannerWebServices():
         browser.find_element(By.XPATH, '/html/body/div[3]/form/table[3]/tbody/tr[2]/td[{}]/input[2]'.format(len(GB.CRNS)-1)).send_keys(Keys.ENTER)
 
 
-    def navigateToSchedule(browser, username, password):
+    def navigateToSchedule(browser):
         #head to student section
         WebDriverWait(browser, 20).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div[2]/span/map/table/tbody/tr[1]/td/table/tbody/tr/td[3]/a'))).click()
 
