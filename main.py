@@ -31,7 +31,7 @@ class MainWindow(QMainWindow):
 
     def loadMainPage(self):
         self.deinitializeClock()
-        uic.loadUi(os.path.join(GB.BASEDIR, "main.ui"), self)
+        uic.loadUi(os.path.join(GB.BASEDIR, "ui", "main.ui"), self)
 
         self.imageMain = self.findChild(QLabel, "imageFirst")
         self.imageMain.setPixmap(QPixmap(os.path.join(GB.BASEDIR,"assets", "logo.png")))
@@ -44,7 +44,7 @@ class MainWindow(QMainWindow):
 
 
     def loadSecondPage(self):
-        uic.loadUi(os.path.join(GB.BASEDIR, "second.ui"), self)
+        uic.loadUi(os.path.join(GB.BASEDIR, "ui", "second.ui"), self)
         self.imageSecond = self.findChild(QLabel, "imageSecond")
         self.imageSecond.setPixmap(QPixmap(os.path.join(GB.BASEDIR,"assets", "logo.png")))
         #info section on left
