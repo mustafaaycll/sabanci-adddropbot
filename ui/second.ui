@@ -250,7 +250,7 @@
        <item row="0" column="0" colspan="4">
         <widget class="QLabel" name="infoLabel">
          <property name="text">
-          <string>Provide the CRNs</string>
+          <string>Provide the CRNs to be registered</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -414,6 +414,33 @@ below</string>
        </item>
       </layout>
      </widget>
+    </widget>
+    <widget class="QWidget" name="simpleEntryTab">
+     <attribute name="title">
+      <string>Simple</string>
+     </attribute>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>This option will only get you inside the add/drop page and will NOT perform any registration. If you also want registration to be automated, use standart or conditional tabs. Otherwise, proceed by clicking the button below.</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <property name="wordWrap">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="forceEntryButton">
+        <property name="text">
+         <string>Start Force Entry</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </widget>
    </widget>
    <widget class="QLCDNumber" name="clock">

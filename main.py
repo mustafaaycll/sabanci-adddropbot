@@ -3,6 +3,7 @@ import os
 import time
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from services import bannerWebServices as SU
 import globalVars as GB
@@ -73,6 +74,9 @@ class MainWindow(QMainWindow):
         self.conditionalEnrollButton.clicked.connect(self.tab2automate)
         self.tab2CrnEdits = []
         self.defineTab2CRNEdits()
+
+        self.forceEntryButton = self.findChild(QPushButton, "forceEntryButton")
+        self.forceEntryButton.clicked.connect(self.tab3automate)
 
 
 
@@ -235,12 +239,36 @@ class MainWindow(QMainWindow):
                 GB.CRNS.append(edit.text())
 
 
+    def tab1automate(self):
+        self.tab1CollectCRNs()
+        try:
+            caps = DesiredCapabilities().CHROME
+            caps["pageLoadStrategy"] = "eager"
+            options = Options()
+            options.add_experimental_option("detach", True)
+            browser = webdriver.Chrome(service=Service(SU.resource_path(GB.DRIVERPATH)), desired_capabilities=caps, options=options)
+            while (True):
+                browser.get(GB.BANNERWEB)
+                while(browser.title != "User Login"):
+                    browser.get(GB.BANNERWEB)
+                time.sleep(0.2)
+                SU.login(browser)
+                SU.enroll(browser)
+                time.sleep(20)
+                SU.navigateToSchedule(browser)
+                break
+        except:
+            browser = None
+
+
     def tab2automate(self):
         self.tab2CollectCRNs()
         try:
             caps = DesiredCapabilities().CHROME
             caps["pageLoadStrategy"] = "eager"
-            browser = webdriver.Chrome(service=Service(SU.resource_path(GB.DRIVERPATH)), desired_capabilities=caps)
+            options = Options()
+            options.add_experimental_option("detach", True)
+            browser = webdriver.Chrome(service=Service(SU.resource_path(GB.DRIVERPATH)), desired_capabilities=caps, options=options)
             SU.checkUntilThereIsAvailableSeat(browser, self.checkCrnEdit.text())
             while (True):
                 browser.get(GB.BANNERWEB)
@@ -255,20 +283,20 @@ class MainWindow(QMainWindow):
             browser = None
 
 
-    def tab1automate(self):
-        self.tab1CollectCRNs()
+    def tab3automate(self):
         try:
             caps = DesiredCapabilities().CHROME
             caps["pageLoadStrategy"] = "eager"
-            browser = webdriver.Chrome(service=Service(SU.resource_path(GB.DRIVERPATH)), desired_capabilities=caps)
+            options = Options()
+            options.add_experimental_option("detach", True)
+            browser = webdriver.Chrome(service=Service(SU.resource_path(GB.DRIVERPATH)), desired_capabilities=caps, options=options)
             while (True):
                 browser.get(GB.BANNERWEB)
                 while(browser.title != "User Login"):
                     browser.get(GB.BANNERWEB)
                 time.sleep(0.2)
                 SU.login(browser)
-                SU.enroll(browser)
-                SU.navigateToSchedule(browser)
+                SU.openAddDropPage(browser)
                 break
         except:
             browser = None

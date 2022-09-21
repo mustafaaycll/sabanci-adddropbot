@@ -41,6 +41,38 @@ class bannerWebServices():
         loginButton.click()
 
 
+    def openAddDropPage(browser):
+        #head to student section
+        WebDriverWait(browser, 20).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div[2]/span/map/table/tbody/tr[1]/td/table/tbody/tr/td[3]/a'))).click()
+
+        #open registration page
+        WebDriverWait(browser, 20).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[3]/table[1]/tbody/tr[1]/td[2]/a'))).click()
+
+        #**********************
+        #select term
+        WebDriverWait(browser, 20).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[3]/table[1]/tbody/tr[1]/td[2]/a'))).click()
+
+        #wait until the term dropdown menu is clickable
+        WebDriverWait(browser, 20).until(EC.presence_of_element_located((By.ID, 'term_id')))
+        termDropdown = Select(browser.find_element(By.ID, 'term_id'))
+        termDropdown.select_by_value(GB.CURRENTTERM)
+
+        #submit changes
+        WebDriverWait(browser, 20).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[3]/form/input[2]'))).click()
+        #**********************
+
+        #selecting a term here may be optional, directly heading to the registration process may or may not show you confirmation for the term selection
+        #possibly, it reads it from the cookies if any term is selected previously and gecko driver automated firefox does not contain cookies afaik
+        #in order to bypass choosing term explicitly, you can comment out the lines between stars and have below line work
+        #it is for clicking the submit button in case of a confirmation, when there is no such button, script will crash, use with care
+
+        #submit the default term
+        #WebDriverWait(browser, 20).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[3]/form/input'))).click()
+
+        #open add/drop page
+        WebDriverWait(browser, 20).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[3]/table[1]/tbody/tr[2]/td[2]/a'))).click()
+
+
     def enroll(browser):
         #head to student section
         WebDriverWait(browser, 20).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div[2]/span/map/table/tbody/tr[1]/td/table/tbody/tr/td[3]/a'))).click()
@@ -62,7 +94,7 @@ class bannerWebServices():
         #**********************
 
         #selecting a term here may be optional, directly heading to the registration process may or may not show you confirmation for the term selection
-        #possbily, it reads it from the cookies if any term is selected previously and gecko driver automated firefox does not contain cookies afaik
+        #possibly, it reads it from the cookies if any term is selected previously and gecko driver automated firefox does not contain cookies afaik
         #in order to bypass choosing term explicitly, you can comment out the lines between stars and have below line work
         #it is for clicking the submit button in case of a confirmation, when there is no such button, script will crash, use with care
 
@@ -73,10 +105,12 @@ class bannerWebServices():
         WebDriverWait(browser, 20).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[3]/table[1]/tbody/tr[2]/td[2]/a'))).click()
 
         #locate the first imput box
-        WebDriverWait(browser, 20).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[3]/form/table[3]/tbody/tr[2]/td[1]/input[2]')))
+        WebDriverWait(browser, 20).until(EC.presence_of_element_located((By.XPATH, '//*[@id="crn_id1"]')))
+
         for i, crn in enumerate(GB.CRNS):
-            browser.find_element(By.XPATH, '/html/body/div[3]/form/table[3]/tbody/tr[2]/td[{}]/input[2]'.format(i+1)).send_keys(crn)
-        browser.find_element(By.XPATH, '/html/body/div[3]/form/table[3]/tbody/tr[2]/td[{}]/input[2]'.format(len(GB.CRNS)-1)).send_keys(Keys.ENTER)
+            browser.find_element(By.XPATH, '//*[@id="crn_id{}"]'.format(i+1)).send_keys(crn)
+        browser.find_element(By.XPATH, '/html/body/div[3]/form/input[19]').click()
+
 
 
     def navigateToSchedule(browser):
