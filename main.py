@@ -250,7 +250,9 @@ class MainWindow(QMainWindow):
             while (True):
                 browser.get(GB.BANNERWEB)
                 while(browser.title != "User Login"):
+                    time.sleep(0.5)
                     browser.get(GB.BANNERWEB)
+                    #SU.tryAgain(browser)
                 time.sleep(0.2)
                 SU.login(browser)
                 SU.enroll(browser)
@@ -273,6 +275,7 @@ class MainWindow(QMainWindow):
             while (True):
                 browser.get(GB.BANNERWEB)
                 while(browser.title != "User Login"):
+                    time.sleep(0.5)
                     browser.get(GB.BANNERWEB)
                 time.sleep(0.2)
                 SU.login(browser)
@@ -293,6 +296,7 @@ class MainWindow(QMainWindow):
             while (True):
                 browser.get(GB.BANNERWEB)
                 while(browser.title != "User Login"):
+                    time.sleep(0.5)
                     browser.get(GB.BANNERWEB)
                 time.sleep(0.2)
                 SU.login(browser)

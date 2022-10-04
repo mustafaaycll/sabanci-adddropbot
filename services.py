@@ -73,6 +73,11 @@ class bannerWebServices():
         WebDriverWait(browser, 20).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[3]/table[1]/tbody/tr[2]/td[2]/a'))).click()
 
 
+    def tryAgain(browser):
+        WebDriverWait(browser, 20).until(EC.presence_of_element_located((By.XPATH, '/html/body/div/div/div[2]/p/strong/a[2]'))).click()
+        WebDriverWait(browser, 20).until(EC.presence_of_element_located((By.XPATH, '/html/body/div/div[1]/div[2]/div/div/div/a'))).click()
+
+
     def enroll(browser):
         #head to student section
         WebDriverWait(browser, 20).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div[2]/span/map/table/tbody/tr[1]/td/table/tbody/tr/td[3]/a'))).click()
