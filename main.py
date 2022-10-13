@@ -20,10 +20,19 @@ from PyQt5.QtWidgets import (
 )
 from PyQt5.QtGui import QIcon, QPixmap
 
+
+def createBrowser():
+    caps = DesiredCapabilities().CHROME
+    caps["pageLoadStrategy"] = "eager"
+    options = Options()
+    options.add_experimental_option("detach", True)
+    return webdriver.Chrome(service=Service(SU.resource_path(GB.DRIVERPATH)), desired_capabilities=caps, options=options)
+
+
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setFixedSize(540, 249)
+        self.setFixedSize(683, 249)
         self.timer = QTimer()
 
         self.loadMainPage()
@@ -48,6 +57,7 @@ class MainWindow(QMainWindow):
         uic.loadUi(os.path.join(GB.BASEDIR, "ui", "second.ui"), self)
         self.imageSecond = self.findChild(QLabel, "imageSecond")
         self.imageSecond.setPixmap(QPixmap(os.path.join(GB.BASEDIR,"assets", "logo.png")))
+
         #info section on left
         self.usernameField = self.findChild(QLabel, "username")
         self.passwordField = self.findChild(QLabel, "password")
@@ -60,24 +70,27 @@ class MainWindow(QMainWindow):
         self.visibilityButton.clicked.connect(self.visibilityToggle)
         self.initializeClock()
 
-        #elements in tab 1 on right
+        #elements in FORCE ENTRY (FE) tab
+        self.FEstartButton = self.findChild(QPushButton, "FEstartButton")
+        self.FEstartButton.clicked.connect(self.FEautomate)
+
+
+        #elements in JUST ADD (JA) tab
         self.enrollButton = self.findChild(QPushButton, "automationButton")
         self.clearAllButton = self.findChild(QPushButton, "clearAllButton")
-        self.enrollButton.clicked.connect(self.tab1automate)
+        self.enrollButton.clicked.connect(self.JAautomate)
         self.clearAllButton.clicked.connect(self.clearCRNEdits)
-        self.tab1CrnEdits = []
-        self.defineTab1CRNEdits()
+        self.JAcrnEdits = []
+        self.defineJAcrnEdits()
 
-        #elements in tab 2 on right
-        self.checkCrnEdit = self.findChild(QLineEdit, "checkCRNEdit")
+        #elements in CHECK AND ADD (CA) tab
+        self.CAcrnCheck = self.findChild(QLineEdit, "CAcrnCheck")
         self.conditionalEnrollButton = self.findChild(QPushButton, "conditionalEnrollButton")
-        self.conditionalEnrollButton.clicked.connect(self.tab2automate)
-        self.tab2CrnEdits = []
-        self.defineTab2CRNEdits()
+        self.conditionalEnrollButton.clicked.connect(self.CAautomate)
+        self.CAcrnEdits = []
+        self.defineCAcrnEdits()
 
-        self.forceEntryButton = self.findChild(QPushButton, "forceEntryButton")
-        self.forceEntryButton.clicked.connect(self.tab3automate)
-
+        #elements in DROP AND ADD (DA) tab
 
 
     def credentialsSaved(self):
@@ -102,107 +115,107 @@ class MainWindow(QMainWindow):
 
 
     def clearCRNEdits(self):
-        for edit in self.tab1CrnEdits:
+        for edit in self.JAcrnEdits:
             edit.clear()
 
 
-    def defineTab1CRNEdits(self):
-        self.tab1crn1 = self.findChild(QLineEdit, "tab1crn1")
-        self.tab1crn1.textChanged[str].connect(lambda:self.clearAllButton.setEnabled(self.tab1crn1.text() != ""))
-        self.tab1crn1.textChanged[str].connect(lambda:self.enrollButton.setEnabled(self.tab1crn1.text() != ""))
-        self.tab1CrnEdits.append(self.tab1crn1)
-        self.tab1crn2 = self.findChild(QLineEdit, "tab1crn2")
-        self.tab1crn2.textChanged[str].connect(lambda:self.clearAllButton.setEnabled(self.tab1crn2.text() != ""))
-        self.tab1crn2.textChanged[str].connect(lambda:self.enrollButton.setEnabled(self.tab1crn2.text() != ""))
-        self.tab1CrnEdits.append(self.tab1crn2)
-        self.tab1crn3 = self.findChild(QLineEdit, "tab1crn3")
-        self.tab1crn3.textChanged[str].connect(lambda:self.clearAllButton.setEnabled(self.tab1crn3.text() != ""))
-        self.tab1crn3.textChanged[str].connect(lambda:self.enrollButton.setEnabled(self.tab1crn3.text() != ""))
-        self.tab1CrnEdits.append(self.tab1crn3)
-        self.tab1crn4 = self.findChild(QLineEdit, "tab1crn4")
-        self.tab1crn4.textChanged[str].connect(lambda:self.clearAllButton.setEnabled(self.tab1crn4.text() != ""))
-        self.tab1crn4.textChanged[str].connect(lambda:self.enrollButton.setEnabled(self.tab1crn4.text() != ""))
-        self.tab1CrnEdits.append(self.tab1crn4)
-        self.tab1crn5 = self.findChild(QLineEdit, "tab1crn5")
-        self.tab1crn5.textChanged[str].connect(lambda:self.clearAllButton.setEnabled(self.tab1crn5.text() != ""))
-        self.tab1crn5.textChanged[str].connect(lambda:self.enrollButton.setEnabled(self.tab1crn5.text() != ""))
-        self.tab1CrnEdits.append(self.tab1crn5)
-        self.tab1crn6 = self.findChild(QLineEdit, "tab1crn6")
-        self.tab1crn6.textChanged[str].connect(lambda:self.clearAllButton.setEnabled(self.tab1crn6.text() != ""))
-        self.tab1crn6.textChanged[str].connect(lambda:self.enrollButton.setEnabled(self.tab1crn6.text() != ""))
-        self.tab1CrnEdits.append(self.tab1crn6)
-        self.tab1crn7 = self.findChild(QLineEdit, "tab1crn7")
-        self.tab1crn7.textChanged[str].connect(lambda:self.clearAllButton.setEnabled(self.tab1crn7.text() != ""))
-        self.tab1crn7.textChanged[str].connect(lambda:self.enrollButton.setEnabled(self.tab1crn7.text() != ""))
-        self.tab1CrnEdits.append(self.tab1crn7)
-        self.tab1crn8 = self.findChild(QLineEdit, "tab1crn8")
-        self.tab1crn8.textChanged[str].connect(lambda:self.clearAllButton.setEnabled(self.tab1crn8.text() != ""))
-        self.tab1crn8.textChanged[str].connect(lambda:self.enrollButton.setEnabled(self.tab1crn8.text() != ""))
-        self.tab1CrnEdits.append(self.tab1crn8)
-        self.tab1crn9 = self.findChild(QLineEdit, "tab1crn9")
-        self.tab1crn9.textChanged[str].connect(lambda:self.clearAllButton.setEnabled(self.tab1crn9.text() != ""))
-        self.tab1crn9.textChanged[str].connect(lambda:self.enrollButton.setEnabled(self.tab1crn9.text() != ""))
-        self.tab1CrnEdits.append(self.tab1crn9)
-        self.tab1crn10 = self.findChild(QLineEdit, "tab1crn10")
-        self.tab1crn10.textChanged[str].connect(lambda:self.clearAllButton.setEnabled(self.tab1crn10.text() != ""))
-        self.tab1crn10.textChanged[str].connect(lambda:self.enrollButton.setEnabled(self.tab1crn10.text() != ""))
-        self.tab1CrnEdits.append(self.tab1crn10)
-        self.tab1crn11 = self.findChild(QLineEdit, "tab1crn11")
-        self.tab1crn11.textChanged[str].connect(lambda:self.clearAllButton.setEnabled(self.tab1crn11.text() != ""))
-        self.tab1crn11.textChanged[str].connect(lambda:self.enrollButton.setEnabled(self.tab1crn11.text() != ""))
-        self.tab1CrnEdits.append(self.tab1crn11)
-        self.tab1crn12 = self.findChild(QLineEdit, "tab1crn12")
-        self.tab1crn12.textChanged[str].connect(lambda:self.clearAllButton.setEnabled(self.tab1crn12.text() != ""))
-        self.tab1crn12.textChanged[str].connect(lambda:self.enrollButton.setEnabled(self.tab1crn12.text() != ""))
-        self.tab1CrnEdits.append(self.tab1crn12)
-        self.tab1crn13 = self.findChild(QLineEdit, "tab1crn13")
-        self.tab1crn13.textChanged[str].connect(lambda:self.clearAllButton.setEnabled(self.tab1crn13.text() != ""))
-        self.tab1crn13.textChanged[str].connect(lambda:self.enrollButton.setEnabled(self.tab1crn13.text() != ""))
-        self.tab1CrnEdits.append(self.tab1crn13)
-        self.tab1crn14 = self.findChild(QLineEdit, "tab1crn14")
-        self.tab1crn14.textChanged[str].connect(lambda:self.clearAllButton.setEnabled(self.tab1crn14.text() != ""))
-        self.tab1crn14.textChanged[str].connect(lambda:self.enrollButton.setEnabled(self.tab1crn14.text() != ""))
-        self.tab1CrnEdits.append(self.tab1crn14)
-        self.tab1crn15 = self.findChild(QLineEdit, "tab1crn15")
-        self.tab1crn15.textChanged[str].connect(lambda:self.clearAllButton.setEnabled(self.tab1crn15.text() != ""))
-        self.tab1crn15.textChanged[str].connect(lambda:self.enrollButton.setEnabled(self.tab1crn15.text() != ""))
-        self.tab1CrnEdits.append(self.tab1crn15)
-        self.tab1crn16 = self.findChild(QLineEdit, "tab1crn16")
-        self.tab1crn16.textChanged[str].connect(lambda:self.clearAllButton.setEnabled(self.tab1crn16.text() != ""))
-        self.tab1crn16.textChanged[str].connect(lambda:self.enrollButton.setEnabled(self.tab1crn16.text() != ""))
-        self.tab1CrnEdits.append(self.tab1crn16)
+    def defineJAcrnEdits(self):
+        self.JAcrn1 = self.findChild(QLineEdit, "JAcrn1")
+        self.JAcrn1.textChanged[str].connect(lambda:self.clearAllButton.setEnabled(self.JAcrn1.text() != ""))
+        self.JAcrn1.textChanged[str].connect(lambda:self.enrollButton.setEnabled(self.JAcrn1.text() != ""))
+        self.JAcrnEdits.append(self.JAcrn1)
+        self.JAcrn2 = self.findChild(QLineEdit, "JAcrn2")
+        self.JAcrn2.textChanged[str].connect(lambda:self.clearAllButton.setEnabled(self.JAcrn2.text() != ""))
+        self.JAcrn2.textChanged[str].connect(lambda:self.enrollButton.setEnabled(self.JAcrn2.text() != ""))
+        self.JAcrnEdits.append(self.JAcrn2)
+        self.JAcrn3 = self.findChild(QLineEdit, "JAcrn3")
+        self.JAcrn3.textChanged[str].connect(lambda:self.clearAllButton.setEnabled(self.JAcrn3.text() != ""))
+        self.JAcrn3.textChanged[str].connect(lambda:self.enrollButton.setEnabled(self.JAcrn3.text() != ""))
+        self.JAcrnEdits.append(self.JAcrn3)
+        self.JAcrn4 = self.findChild(QLineEdit, "JAcrn4")
+        self.JAcrn4.textChanged[str].connect(lambda:self.clearAllButton.setEnabled(self.JAcrn4.text() != ""))
+        self.JAcrn4.textChanged[str].connect(lambda:self.enrollButton.setEnabled(self.JAcrn4.text() != ""))
+        self.JAcrnEdits.append(self.JAcrn4)
+        self.JAcrn5 = self.findChild(QLineEdit, "JAcrn5")
+        self.JAcrn5.textChanged[str].connect(lambda:self.clearAllButton.setEnabled(self.JAcrn5.text() != ""))
+        self.JAcrn5.textChanged[str].connect(lambda:self.enrollButton.setEnabled(self.JAcrn5.text() != ""))
+        self.JAcrnEdits.append(self.JAcrn5)
+        self.JAcrn6 = self.findChild(QLineEdit, "JAcrn6")
+        self.JAcrn6.textChanged[str].connect(lambda:self.clearAllButton.setEnabled(self.JAcrn6.text() != ""))
+        self.JAcrn6.textChanged[str].connect(lambda:self.enrollButton.setEnabled(self.JAcrn6.text() != ""))
+        self.JAcrnEdits.append(self.JAcrn6)
+        self.JAcrn7 = self.findChild(QLineEdit, "JAcrn7")
+        self.JAcrn7.textChanged[str].connect(lambda:self.clearAllButton.setEnabled(self.JAcrn7.text() != ""))
+        self.JAcrn7.textChanged[str].connect(lambda:self.enrollButton.setEnabled(self.JAcrn7.text() != ""))
+        self.JAcrnEdits.append(self.JAcrn7)
+        self.JAcrn8 = self.findChild(QLineEdit, "JAcrn8")
+        self.JAcrn8.textChanged[str].connect(lambda:self.clearAllButton.setEnabled(self.JAcrn8.text() != ""))
+        self.JAcrn8.textChanged[str].connect(lambda:self.enrollButton.setEnabled(self.JAcrn8.text() != ""))
+        self.JAcrnEdits.append(self.JAcrn8)
+        self.JAcrn9 = self.findChild(QLineEdit, "JAcrn9")
+        self.JAcrn9.textChanged[str].connect(lambda:self.clearAllButton.setEnabled(self.JAcrn9.text() != ""))
+        self.JAcrn9.textChanged[str].connect(lambda:self.enrollButton.setEnabled(self.JAcrn9.text() != ""))
+        self.JAcrnEdits.append(self.JAcrn9)
+        self.JAcrn10 = self.findChild(QLineEdit, "JAcrn10")
+        self.JAcrn10.textChanged[str].connect(lambda:self.clearAllButton.setEnabled(self.JAcrn10.text() != ""))
+        self.JAcrn10.textChanged[str].connect(lambda:self.enrollButton.setEnabled(self.JAcrn10.text() != ""))
+        self.JAcrnEdits.append(self.JAcrn10)
+        self.JAcrn11 = self.findChild(QLineEdit, "JAcrn11")
+        self.JAcrn11.textChanged[str].connect(lambda:self.clearAllButton.setEnabled(self.JAcrn11.text() != ""))
+        self.JAcrn11.textChanged[str].connect(lambda:self.enrollButton.setEnabled(self.JAcrn11.text() != ""))
+        self.JAcrnEdits.append(self.JAcrn11)
+        self.JAcrn12 = self.findChild(QLineEdit, "JAcrn12")
+        self.JAcrn12.textChanged[str].connect(lambda:self.clearAllButton.setEnabled(self.JAcrn12.text() != ""))
+        self.JAcrn12.textChanged[str].connect(lambda:self.enrollButton.setEnabled(self.JAcrn12.text() != ""))
+        self.JAcrnEdits.append(self.JAcrn12)
+        self.JAcrn13 = self.findChild(QLineEdit, "JAcrn13")
+        self.JAcrn13.textChanged[str].connect(lambda:self.clearAllButton.setEnabled(self.JAcrn13.text() != ""))
+        self.JAcrn13.textChanged[str].connect(lambda:self.enrollButton.setEnabled(self.JAcrn13.text() != ""))
+        self.JAcrnEdits.append(self.JAcrn13)
+        self.JAcrn14 = self.findChild(QLineEdit, "JAcrn14")
+        self.JAcrn14.textChanged[str].connect(lambda:self.clearAllButton.setEnabled(self.JAcrn14.text() != ""))
+        self.JAcrn14.textChanged[str].connect(lambda:self.enrollButton.setEnabled(self.JAcrn14.text() != ""))
+        self.JAcrnEdits.append(self.JAcrn14)
+        self.JAcrn15 = self.findChild(QLineEdit, "JAcrn15")
+        self.JAcrn15.textChanged[str].connect(lambda:self.clearAllButton.setEnabled(self.JAcrn15.text() != ""))
+        self.JAcrn15.textChanged[str].connect(lambda:self.enrollButton.setEnabled(self.JAcrn15.text() != ""))
+        self.JAcrnEdits.append(self.JAcrn15)
+        self.JAcrn16 = self.findChild(QLineEdit, "JAcrn16")
+        self.JAcrn16.textChanged[str].connect(lambda:self.clearAllButton.setEnabled(self.JAcrn16.text() != ""))
+        self.JAcrn16.textChanged[str].connect(lambda:self.enrollButton.setEnabled(self.JAcrn16.text() != ""))
+        self.JAcrnEdits.append(self.JAcrn16)
 
 
-    def defineTab2CRNEdits(self):
-        self.tab2crn1 = self.findChild(QLineEdit, "tab2crn1")
-        self.tab2crn1.textChanged[str].connect(lambda:self.conditionalEnrollButton.setEnabled(self.tab2crn1.text() != "" and self.checkCrnEdit.text() != ""))
-        self.tab2CrnEdits.append(self.tab2crn1)
-        self.tab2crn2 = self.findChild(QLineEdit, "tab2crn2")
-        self.tab2crn2.textChanged[str].connect(lambda:self.conditionalEnrollButton.setEnabled(self.tab2crn2.text() != "" and self.checkCrnEdit.text() != ""))
-        self.tab2CrnEdits.append(self.tab2crn2)
-        self.tab2crn3 = self.findChild(QLineEdit, "tab2crn3")
-        self.tab2crn3.textChanged[str].connect(lambda:self.conditionalEnrollButton.setEnabled(self.tab2crn3.text() != "" and self.checkCrnEdit.text() != ""))
-        self.tab2CrnEdits.append(self.tab2crn3)
-        self.tab2crn4 = self.findChild(QLineEdit, "tab2crn4")
-        self.tab2crn4.textChanged[str].connect(lambda:self.conditionalEnrollButton.setEnabled(self.tab2crn4.text() != "" and self.checkCrnEdit.text() != ""))
-        self.tab2CrnEdits.append(self.tab2crn4)
-        self.tab2crn5 = self.findChild(QLineEdit, "tab2crn5")
-        self.tab2crn5.textChanged[str].connect(lambda:self.conditionalEnrollButton.setEnabled(self.tab2crn5.text() != "" and self.checkCrnEdit.text() != ""))
-        self.tab2CrnEdits.append(self.tab2crn5)
-        self.tab2crn6 = self.findChild(QLineEdit, "tab2crn6")
-        self.tab2crn6.textChanged[str].connect(lambda:self.conditionalEnrollButton.setEnabled(self.tab2crn6.text() != "" and self.checkCrnEdit.text() != ""))
-        self.tab2CrnEdits.append(self.tab2crn6)
-        self.tab2crn7 = self.findChild(QLineEdit, "tab2crn7")
-        self.tab2crn7.textChanged[str].connect(lambda:self.conditionalEnrollButton.setEnabled(self.tab2crn7.text() != "" and self.checkCrnEdit.text() != ""))
-        self.tab2CrnEdits.append(self.tab2crn7)
-        self.tab2crn8 = self.findChild(QLineEdit, "tab2crn8")
-        self.tab2crn8.textChanged[str].connect(lambda:self.conditionalEnrollButton.setEnabled(self.tab2crn8.text() != "" and self.checkCrnEdit.text() != ""))
-        self.tab2CrnEdits.append(self.tab2crn8)
-        self.checkCrnEdit.textChanged[str].connect(lambda:self.conditionalEnrollButton.setEnabled(self.checkCrnEdit.text() != "" and self.checkAnyTab2CrnEditHasText()))
+    def defineCAcrnEdits(self):
+        self.CAcrn1 = self.findChild(QLineEdit, "CAcrn1")
+        self.CAcrn1.textChanged[str].connect(lambda:self.conditionalEnrollButton.setEnabled(self.CAcrn1.text() != "" and self.CAcrnCheck.text() != ""))
+        self.CAcrnEdits.append(self.CAcrn1)
+        self.CAcrn2 = self.findChild(QLineEdit, "CAcrn2")
+        self.CAcrn2.textChanged[str].connect(lambda:self.conditionalEnrollButton.setEnabled(self.CAcrn2.text() != "" and self.CAcrnCheck.text() != ""))
+        self.CAcrnEdits.append(self.CAcrn2)
+        self.CAcrn3 = self.findChild(QLineEdit, "CAcrn3")
+        self.CAcrn3.textChanged[str].connect(lambda:self.conditionalEnrollButton.setEnabled(self.CAcrn3.text() != "" and self.CAcrnCheck.text() != ""))
+        self.CAcrnEdits.append(self.CAcrn3)
+        self.CAcrn4 = self.findChild(QLineEdit, "CAcrn4")
+        self.CAcrn4.textChanged[str].connect(lambda:self.conditionalEnrollButton.setEnabled(self.CAcrn4.text() != "" and self.CAcrnCheck.text() != ""))
+        self.CAcrnEdits.append(self.CAcrn4)
+        self.CAcrn5 = self.findChild(QLineEdit, "CAcrn5")
+        self.CAcrn5.textChanged[str].connect(lambda:self.conditionalEnrollButton.setEnabled(self.CAcrn5.text() != "" and self.CAcrnCheck.text() != ""))
+        self.CAcrnEdits.append(self.CAcrn5)
+        self.CAcrn6 = self.findChild(QLineEdit, "CAcrn6")
+        self.CAcrn6.textChanged[str].connect(lambda:self.conditionalEnrollButton.setEnabled(self.CAcrn6.text() != "" and self.CAcrnCheck.text() != ""))
+        self.CAcrnEdits.append(self.CAcrn6)
+        self.CAcrn7 = self.findChild(QLineEdit, "CAcrn7")
+        self.CAcrn7.textChanged[str].connect(lambda:self.conditionalEnrollButton.setEnabled(self.CAcrn7.text() != "" and self.CAcrnCheck.text() != ""))
+        self.CAcrnEdits.append(self.CAcrn7)
+        self.CAcrn8 = self.findChild(QLineEdit, "CAcrn8")
+        self.CAcrn8.textChanged[str].connect(lambda:self.conditionalEnrollButton.setEnabled(self.CAcrn8.text() != "" and self.CAcrnCheck.text() != ""))
+        self.CAcrnEdits.append(self.CAcrn8)
+        self.CAcrnCheck.textChanged[str].connect(lambda:self.conditionalEnrollButton.setEnabled(self.CAcrnCheck.text() != "" and self.anyCAcrnEditHasText()))
 
 
-    def checkAnyTab2CrnEditHasText(self):
-        for edit in self.tab2CrnEdits:
+    def anyCAcrnEditHasText(self):
+        for edit in self.CAcrnEdits:
             if edit.text() != "":
                 return True
         return False
@@ -225,74 +238,23 @@ class MainWindow(QMainWindow):
         self.clock.display(self.stringTime)
 
 
-    def tab1CollectCRNs(self):
+    def JAcollectCRNs(self):
         GB.CRNS = []
-        for edit in self.tab1CrnEdits:
+        for edit in self.JAcrnEdits:
             if edit.text() != "":
                 GB.CRNS.append(edit.text())
 
 
-    def tab2CollectCRNs(self):
+    def CAcollectCRNs(self):
         GB.CRNS = []
-        for edit in self.tab2CrnEdits:
+        for edit in self.CAcrnEdits:
             if edit.text() != "":
                 GB.CRNS.append(edit.text())
 
 
-    def tab1automate(self):
-        self.tab1CollectCRNs()
+    def FEautomate(self):
         try:
-            caps = DesiredCapabilities().CHROME
-            caps["pageLoadStrategy"] = "eager"
-            options = Options()
-            options.add_experimental_option("detach", True)
-            browser = webdriver.Chrome(service=Service(SU.resource_path(GB.DRIVERPATH)), desired_capabilities=caps, options=options)
-            while (True):
-                browser.get(GB.BANNERWEB)
-                while(browser.title != "User Login"):
-                    time.sleep(0.5)
-                    browser.get(GB.BANNERWEB)
-                    #SU.tryAgain(browser)
-                time.sleep(0.2)
-                SU.login(browser)
-                SU.enroll(browser)
-                time.sleep(20)
-                SU.navigateToSchedule(browser)
-                break
-        except:
-            browser = None
-
-
-    def tab2automate(self):
-        self.tab2CollectCRNs()
-        try:
-            caps = DesiredCapabilities().CHROME
-            caps["pageLoadStrategy"] = "eager"
-            options = Options()
-            options.add_experimental_option("detach", True)
-            browser = webdriver.Chrome(service=Service(SU.resource_path(GB.DRIVERPATH)), desired_capabilities=caps, options=options)
-            SU.checkUntilThereIsAvailableSeat(browser, self.checkCrnEdit.text())
-            while (True):
-                browser.get(GB.BANNERWEB)
-                while(browser.title != "User Login"):
-                    time.sleep(0.5)
-                    browser.get(GB.BANNERWEB)
-                time.sleep(0.2)
-                SU.login(browser)
-                SU.enroll(browser)
-                SU.navigateToSchedule(browser)
-                break
-        except:
-            browser = None
-
-
-    def tab3automate(self):
-        try:
-            caps = DesiredCapabilities().CHROME
-            caps["pageLoadStrategy"] = "eager"
-            options = Options()
-            options.add_experimental_option("detach", True)
-            browser = webdriver.Chrome(service=Service(SU.resource_path(GB.DRIVERPATH)), desired_capabilities=caps, options=options)
+            browser = createBrowser()
             while (True):
                 browser.get(GB.BANNERWEB)
                 while(browser.title != "User Login"):
@@ -301,6 +263,49 @@ class MainWindow(QMainWindow):
                 time.sleep(0.2)
                 SU.login(browser)
                 SU.openAddDropPage(browser)
+                break
+        except:
+            browser = None
+
+
+    def JAautomate(self):
+        self.JAcollectCRNs()
+        print([i.text() for i in self.JAcrnEdits])
+        print(GB.CRNS)
+        try:
+            browser = createBrowser()
+            while (True):
+                browser.get(GB.BANNERWEB)
+                while(browser.title != "User Login"):
+                    time.sleep(0.5)
+                    browser.get(GB.BANNERWEB)
+                time.sleep(0.2)
+                SU.login(browser)
+                SU.enroll(browser)
+                time.sleep(15)
+                SU.navigateToSchedule(browser)
+                break
+        except:
+            browser = None
+
+
+    def CAautomate(self):
+        self.CAcollectCRNs()
+        print([i.text() for i in self.CAcrnEdits])
+        print(GB.CRNS)
+        try:
+            browser = createBrowser()
+            SU.checkUntilThereIsAvailableSeat(browser, self.CAcrnCheck.text())
+            while (True):
+                browser.get(GB.BANNERWEB)
+                while(browser.title != "User Login"):
+                    time.sleep(0.5)
+                    browser.get(GB.BANNERWEB)
+                time.sleep(0.2)
+                SU.login(browser)
+                SU.enroll(browser)
+                time.sleep(15)
+                SU.navigateToSchedule(browser)
                 break
         except:
             browser = None

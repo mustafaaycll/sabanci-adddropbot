@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>540</width>
+    <width>683</width>
     <height>249</height>
    </rect>
   </property>
@@ -110,7 +110,7 @@
      <rect>
       <x>280</x>
       <y>10</y>
-      <width>251</width>
+      <width>391</width>
       <height>231</height>
      </rect>
     </property>
@@ -137,7 +137,7 @@
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>251</width>
+       <width>391</width>
        <height>159</height>
       </rect>
      </property>
@@ -158,28 +158,16 @@
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>225</width>
-           <height>536</height>
+           <width>350</width>
+           <height>568</height>
           </rect>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_2">
           <item>
            <widget class="QLabel" name="label">
             <property name="text">
-             <string>&lt;ol&gt;
-	&lt;li&gt;Make sure you have &lt;a href=&quot;https://www.google.com/intl/tr_tr/chrome/thank-you.html?statcb=0&amp;amp;installdataindex=empty&amp;amp;defaultbrowser=0&quot;&gt;Google Chrome&lt;/a&gt;&lt;a href=&quot;https://www.google.com/intl/tr_tr/chrome/&quot;&gt; &lt;/a&gt;installed on your Mac&lt;/li&gt;
-	&lt;li&gt;Provide SUCourse username and password, proceed by clicking save button.&lt;/li&gt;
-	&lt;li&gt;In the next screen, select desired mode:
-	&lt;ul&gt;
-		&lt;li&gt;&lt;strong&gt;Standard&lt;/strong&gt;: bot will register all the CRNs you provide&lt;/li&gt;
-		&lt;li&gt;&lt;strong&gt;Conditional&lt;/strong&gt;: bot will register all the CRNs you provide as long as there exists at least 1 available seat in the class with the specific CRN&lt;/li&gt;
-	&lt;/ul&gt;
-	&lt;/li&gt;
-	&lt;li&gt;Proceed by clicking the start button, this will trigger the automation&lt;/li&gt;
-	&lt;li&gt;After registering finishes, bot will open the page where you can view successfully added courses in BannerWeb&lt;/li&gt;
-	&lt;li&gt;After a short period of time, chrome will close itself. You can also close it safely.&lt;/li&gt;
-&lt;/ol&gt;
-</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;ol style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Make sure you have &lt;a href=&quot;https://www.google.com/intl/tr_tr/chrome/thank-you.html?statcb=0&amp;amp;installdataindex=empty&amp;amp;defaultbrowser=0&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#007af4;&quot;&gt;Google Chrome &lt;/span&gt;&lt;/a&gt;installed on your Mac &lt;/li&gt;&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Provide SUCourse username and password, proceed by clicking save button. &lt;/li&gt;&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;In the next screen, select desired mode: 
+&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 2;&quot;&gt;&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Force Entry&lt;/span&gt;: bot will ONLY get you to the add/drop page&lt;/li&gt;&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Just Add&lt;/span&gt;: bot will get you to the add/drop page, register all the CRNs you provide, wait 15 seconds and, finally, will navigate to the detailed schedule page for you to be sure that all the CRNs are added.&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 2;&quot;&gt;&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Check and Add&lt;/span&gt;: bot will register all the CRNs you provide as long as there exists at least 1 available seat in the class with the specific CRN, then will wait 15 seconds and navigate to the detailed schedule page for you to be sure that all the CRNs are added.&lt;/li&gt;&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Drop and Add&lt;/span&gt;: bot will get you to the add/drop page, drop the courses with the CRNs you provided, and add the courses with the CRNs you also provided.&lt;/li&gt;&lt;/ul&gt;&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Proceed by clicking the start button, this will trigger the automation &lt;/li&gt;&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;After registering finishes, bot will open the page where you can view successfully added courses in BannerWeb &lt;/li&gt;&lt;li style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;After a short period of time, chrome will detach itself from the main app. You can close the Chrome instance safely or leave it open and continue to use the app. &lt;/li&gt;&lt;/ol&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="wordWrap">
              <bool>true</bool>
@@ -203,7 +191,7 @@
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>251</width>
+       <width>391</width>
        <height>159</height>
       </rect>
      </property>
@@ -221,15 +209,15 @@
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>225</width>
-           <height>152</height>
+           <width>365</width>
+           <height>133</height>
           </rect>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_4">
           <item>
            <widget class="QLabel" name="label_2">
             <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;No personal information is collected or stored. Bot uses a another instance of Google Chrome, meaning that it also cannot read your cookies, passwords, addresses etc. stored in your actual Google Chrome account and application.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;No personal information is collected or stored. Bot uses another instance of Google Chrome, meaning that it also cannot read your cookies, passwords, addresses etc. stored in your actual Google Chrome account and application.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="wordWrap">
              <bool>true</bool>
@@ -243,6 +231,14 @@
      </layout>
     </widget>
     <widget class="QWidget" name="page_3">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>391</width>
+       <height>159</height>
+      </rect>
+     </property>
      <attribute name="label">
       <string>About</string>
      </attribute>
@@ -257,8 +253,8 @@
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>225</width>
-           <height>336</height>
+           <width>350</width>
+           <height>304</height>
           </rect>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_6">

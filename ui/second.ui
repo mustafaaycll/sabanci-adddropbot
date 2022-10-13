@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>540</width>
+    <width>683</width>
     <height>249</height>
    </rect>
   </property>
@@ -129,23 +129,52 @@
      <rect>
       <x>280</x>
       <y>10</y>
-      <width>251</width>
+      <width>400</width>
       <height>231</height>
      </rect>
     </property>
     <property name="currentIndex">
      <number>0</number>
     </property>
-    <widget class="QWidget" name="basicEnrollTab">
+    <widget class="QWidget" name="FETab">
      <attribute name="title">
-      <string>Standard</string>
+      <string>Force Entry</string>
+     </attribute>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>This option will only get you to the add/drop page and will NOT perform any registration. Instead, you will have to fill the boxes and click submit.
+
+If you also want registration to be automated, use one of the tabs labeled as &quot;Just Add&quot;, &quot;Check and Add&quot; and &quot;Drop and Add&quot;, according to your needs. Otherwise, proceed by clicking the button below.</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <property name="wordWrap">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="FEstartButton">
+        <property name="text">
+         <string>Start Force Entry</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="JATab">
+     <attribute name="title">
+      <string>Just Add</string>
      </attribute>
      <widget class="QWidget" name="gridLayoutWidget">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>241</width>
+        <width>391</width>
         <height>201</height>
        </rect>
       </property>
@@ -154,28 +183,28 @@
         <enum>QLayout::SetDefaultConstraint</enum>
        </property>
        <item row="3" column="2">
-        <widget class="QLineEdit" name="tab1crn11">
+        <widget class="QLineEdit" name="JAcrn11">
          <property name="maxLength">
           <number>5</number>
          </property>
         </widget>
        </item>
        <item row="4" column="0">
-        <widget class="QLineEdit" name="tab1crn13">
+        <widget class="QLineEdit" name="JAcrn13">
          <property name="maxLength">
           <number>5</number>
          </property>
         </widget>
        </item>
        <item row="2" column="3">
-        <widget class="QLineEdit" name="tab1crn8">
+        <widget class="QLineEdit" name="JAcrn8">
          <property name="maxLength">
           <number>5</number>
          </property>
         </widget>
        </item>
        <item row="1" column="0">
-        <widget class="QLineEdit" name="tab1crn1">
+        <widget class="QLineEdit" name="JAcrn1">
          <property name="inputMask">
           <string/>
          </property>
@@ -185,70 +214,70 @@
         </widget>
        </item>
        <item row="2" column="1">
-        <widget class="QLineEdit" name="tab1crn6">
+        <widget class="QLineEdit" name="JAcrn6">
          <property name="maxLength">
           <number>5</number>
          </property>
         </widget>
        </item>
        <item row="2" column="2">
-        <widget class="QLineEdit" name="tab1crn7">
+        <widget class="QLineEdit" name="JAcrn7">
          <property name="maxLength">
           <number>5</number>
          </property>
         </widget>
        </item>
        <item row="1" column="1">
-        <widget class="QLineEdit" name="tab1crn2">
+        <widget class="QLineEdit" name="JAcrn2">
          <property name="maxLength">
           <number>5</number>
          </property>
         </widget>
        </item>
        <item row="1" column="3">
-        <widget class="QLineEdit" name="tab1crn4">
+        <widget class="QLineEdit" name="JAcrn4">
          <property name="maxLength">
           <number>5</number>
          </property>
         </widget>
        </item>
        <item row="4" column="1">
-        <widget class="QLineEdit" name="tab1crn14">
+        <widget class="QLineEdit" name="JAcrn14">
          <property name="maxLength">
           <number>5</number>
          </property>
         </widget>
        </item>
        <item row="3" column="0">
-        <widget class="QLineEdit" name="tab1crn9">
+        <widget class="QLineEdit" name="JAcrn9">
          <property name="maxLength">
           <number>5</number>
          </property>
         </widget>
        </item>
        <item row="4" column="2">
-        <widget class="QLineEdit" name="tab1crn15">
+        <widget class="QLineEdit" name="JAcrn15">
          <property name="maxLength">
           <number>5</number>
          </property>
         </widget>
        </item>
        <item row="4" column="3">
-        <widget class="QLineEdit" name="tab1crn16">
+        <widget class="QLineEdit" name="JAcrn16">
          <property name="maxLength">
           <number>5</number>
          </property>
         </widget>
        </item>
        <item row="2" column="0">
-        <widget class="QLineEdit" name="tab1crn5">
+        <widget class="QLineEdit" name="JAcrn5">
          <property name="maxLength">
           <number>5</number>
          </property>
         </widget>
        </item>
        <item row="0" column="0" colspan="4">
-        <widget class="QLabel" name="infoLabel">
+        <widget class="QLabel" name="JALabel">
          <property name="text">
           <string>Provide the CRNs to be registered</string>
          </property>
@@ -258,21 +287,21 @@
         </widget>
        </item>
        <item row="3" column="1">
-        <widget class="QLineEdit" name="tab1crn10">
+        <widget class="QLineEdit" name="JAcrn10">
          <property name="maxLength">
           <number>5</number>
          </property>
         </widget>
        </item>
        <item row="1" column="2">
-        <widget class="QLineEdit" name="tab1crn3">
+        <widget class="QLineEdit" name="JAcrn3">
          <property name="maxLength">
           <number>5</number>
          </property>
         </widget>
        </item>
        <item row="3" column="3">
-        <widget class="QLineEdit" name="tab1crn12">
+        <widget class="QLineEdit" name="JAcrn12">
          <property name="maxLength">
           <number>5</number>
          </property>
@@ -301,32 +330,34 @@
       </layout>
      </widget>
     </widget>
-    <widget class="QWidget" name="conditionalEnrollTab">
+    <widget class="QWidget" name="CATab">
      <attribute name="title">
-      <string>Conditional</string>
+      <string>Check and Add</string>
      </attribute>
      <widget class="QWidget" name="verticalLayoutWidget">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>241</width>
+        <width>391</width>
         <height>201</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout">
+        <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0">
+         <property name="spacing">
+          <number>-1</number>
+         </property>
          <item>
           <widget class="QLabel" name="whenLabel">
            <property name="text">
-            <string>When there is available seat
-in this CRN:</string>
+            <string>When there is available seat in this CRN:</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="checkCRNEdit">
+          <widget class="QLineEdit" name="CAcrnCheck">
            <property name="maxLength">
             <number>5</number>
            </property>
@@ -337,64 +368,63 @@ in this CRN:</string>
        <item>
         <widget class="QLabel" name="thenLabel">
          <property name="text">
-          <string>Register the courses with the CRNs
-below</string>
+          <string>Register the courses with the CRNs below</string>
          </property>
         </widget>
        </item>
        <item>
         <layout class="QGridLayout" name="gridLayout_2">
          <item row="0" column="2">
-          <widget class="QLineEdit" name="tab2crn3">
+          <widget class="QLineEdit" name="CAcrn3">
            <property name="maxLength">
             <number>5</number>
            </property>
           </widget>
          </item>
          <item row="0" column="0">
-          <widget class="QLineEdit" name="tab2crn1">
+          <widget class="QLineEdit" name="CAcrn1">
            <property name="maxLength">
             <number>5</number>
            </property>
           </widget>
          </item>
          <item row="0" column="3">
-          <widget class="QLineEdit" name="tab2crn4">
+          <widget class="QLineEdit" name="CAcrn4">
            <property name="maxLength">
             <number>5</number>
            </property>
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QLineEdit" name="tab2crn2">
+          <widget class="QLineEdit" name="CAcrn2">
            <property name="maxLength">
             <number>5</number>
            </property>
           </widget>
          </item>
          <item row="1" column="0">
-          <widget class="QLineEdit" name="tab2crn5">
+          <widget class="QLineEdit" name="CAcrn5">
            <property name="maxLength">
             <number>5</number>
            </property>
           </widget>
          </item>
          <item row="1" column="1">
-          <widget class="QLineEdit" name="tab2crn6">
+          <widget class="QLineEdit" name="CAcrn6">
            <property name="maxLength">
             <number>5</number>
            </property>
           </widget>
          </item>
          <item row="1" column="2">
-          <widget class="QLineEdit" name="tab2crn7">
+          <widget class="QLineEdit" name="CAcrn7">
            <property name="maxLength">
             <number>5</number>
            </property>
           </widget>
          </item>
          <item row="1" column="3">
-          <widget class="QLineEdit" name="tab2crn8">
+          <widget class="QLineEdit" name="CAcrn8">
            <property name="maxLength">
             <number>5</number>
            </property>
@@ -415,32 +445,103 @@ below</string>
       </layout>
      </widget>
     </widget>
-    <widget class="QWidget" name="simpleEntryTab">
+    <widget class="QWidget" name="DATab">
      <attribute name="title">
-      <string>Simple</string>
+      <string>Drop and Add</string>
      </attribute>
-     <layout class="QVBoxLayout" name="verticalLayout_2">
-      <item>
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>This option will only get you inside the add/drop page and will NOT perform any registration. If you also want registration to be automated, use standart or conditional tabs. Otherwise, proceed by clicking the button below.</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-        <property name="wordWrap">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="forceEntryButton">
-        <property name="text">
-         <string>Start Force Entry</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
+     <widget class="QWidget" name="verticalLayoutWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>391</width>
+        <height>201</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <item>
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>Drop these CRNs</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QGridLayout" name="gridLayout_4">
+         <item row="0" column="2">
+          <widget class="QLineEdit" name="lineEdit_3"/>
+         </item>
+         <item row="0" column="3">
+          <widget class="QLineEdit" name="lineEdit_4"/>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLineEdit" name="lineEdit"/>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLineEdit" name="lineEdit_2"/>
+         </item>
+         <item row="1" column="1">
+          <widget class="QLineEdit" name="lineEdit_5"/>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLineEdit" name="lineEdit_6"/>
+         </item>
+         <item row="1" column="2">
+          <widget class="QLineEdit" name="lineEdit_7"/>
+         </item>
+         <item row="1" column="3">
+          <widget class="QLineEdit" name="lineEdit_8"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_3">
+         <property name="text">
+          <string>Then add these CRNs</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QGridLayout" name="gridLayout_6">
+         <item row="0" column="0">
+          <widget class="QLineEdit" name="lineEdit_9"/>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLineEdit" name="lineEdit_11"/>
+         </item>
+         <item row="0" column="2">
+          <widget class="QLineEdit" name="lineEdit_12"/>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLineEdit" name="lineEdit_10"/>
+         </item>
+         <item row="0" column="3">
+          <widget class="QLineEdit" name="lineEdit_13"/>
+         </item>
+         <item row="1" column="1">
+          <widget class="QLineEdit" name="lineEdit_14"/>
+         </item>
+         <item row="1" column="2">
+          <widget class="QLineEdit" name="lineEdit_15"/>
+         </item>
+         <item row="1" column="3">
+          <widget class="QLineEdit" name="lineEdit_16"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QPushButton" name="pushButton">
+           <property name="text">
+            <string>Start</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
     </widget>
    </widget>
    <widget class="QLCDNumber" name="clock">
