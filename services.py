@@ -112,7 +112,7 @@ class bannerWebServices():
         #locate the first imput box
         WebDriverWait(browser, 20).until(EC.presence_of_element_located((By.XPATH, '//*[@id="crn_id1"]')))
 
-        for i, crn in enumerate(GB.CRNS):
+        for i, crn in enumerate(GB.CRNSTOADD):
             browser.find_element(By.XPATH, '//*[@id="crn_id{}"]'.format(i+1)).send_keys(crn)
         browser.find_element(By.XPATH, '/html/body/div[3]/form/input[19]').click()
 

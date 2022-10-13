@@ -142,7 +142,7 @@
      </attribute>
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
-       <widget class="QLabel" name="label">
+       <widget class="QLabel" name="FEdescriptionLabel">
         <property name="text">
          <string>This option will only get you to the add/drop page and will NOT perform any registration. Instead, you will have to fill the boxes and click submit.
 
@@ -178,12 +178,60 @@ If you also want registration to be automated, use one of the tabs labeled as &q
         <height>201</height>
        </rect>
       </property>
-      <layout class="QGridLayout" name="gridLayout">
+      <layout class="QGridLayout" name="JAgridLayout">
        <property name="sizeConstraint">
         <enum>QLayout::SetDefaultConstraint</enum>
        </property>
-       <item row="3" column="2">
-        <widget class="QLineEdit" name="JAcrn11">
+       <item row="4" column="3">
+        <widget class="QLineEdit" name="JAcrn16">
+         <property name="maxLength">
+          <number>5</number>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="2" colspan="2">
+        <widget class="QPushButton" name="JAstartButton">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Start</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLineEdit" name="JAcrn9">
+         <property name="maxLength">
+          <number>5</number>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QLineEdit" name="JAcrn14">
+         <property name="maxLength">
+          <number>5</number>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="3">
+        <widget class="QLineEdit" name="JAcrn12">
+         <property name="maxLength">
+          <number>5</number>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0" colspan="2">
+        <widget class="QPushButton" name="JAclearButton">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Clear</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLineEdit" name="JAcrn5">
          <property name="maxLength">
           <number>5</number>
          </property>
@@ -191,6 +239,13 @@ If you also want registration to be automated, use one of the tabs labeled as &q
        </item>
        <item row="4" column="0">
         <widget class="QLineEdit" name="JAcrn13">
+         <property name="maxLength">
+          <number>5</number>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="2">
+        <widget class="QLineEdit" name="JAcrn11">
          <property name="maxLength">
           <number>5</number>
          </property>
@@ -213,6 +268,33 @@ If you also want registration to be automated, use one of the tabs labeled as &q
          </property>
         </widget>
        </item>
+       <item row="3" column="1">
+        <widget class="QLineEdit" name="JAcrn10">
+         <property name="maxLength">
+          <number>5</number>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0" colspan="4">
+        <widget class="QLabel" name="JAdescription">
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This option will automatically register all the given CRNs, so provide the CRNs to be registered below.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="2">
+        <widget class="QLineEdit" name="JAcrn15">
+         <property name="maxLength">
+          <number>5</number>
+         </property>
+        </widget>
+       </item>
        <item row="2" column="1">
         <widget class="QLineEdit" name="JAcrn6">
          <property name="maxLength">
@@ -227,8 +309,8 @@ If you also want registration to be automated, use one of the tabs labeled as &q
          </property>
         </widget>
        </item>
-       <item row="1" column="1">
-        <widget class="QLineEdit" name="JAcrn2">
+       <item row="1" column="2">
+        <widget class="QLineEdit" name="JAcrn3">
          <property name="maxLength">
           <number>5</number>
          </property>
@@ -241,89 +323,10 @@ If you also want registration to be automated, use one of the tabs labeled as &q
          </property>
         </widget>
        </item>
-       <item row="4" column="1">
-        <widget class="QLineEdit" name="JAcrn14">
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="JAcrn2">
          <property name="maxLength">
           <number>5</number>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="0">
-        <widget class="QLineEdit" name="JAcrn9">
-         <property name="maxLength">
-          <number>5</number>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="2">
-        <widget class="QLineEdit" name="JAcrn15">
-         <property name="maxLength">
-          <number>5</number>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="3">
-        <widget class="QLineEdit" name="JAcrn16">
-         <property name="maxLength">
-          <number>5</number>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <widget class="QLineEdit" name="JAcrn5">
-         <property name="maxLength">
-          <number>5</number>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="0" colspan="4">
-        <widget class="QLabel" name="JALabel">
-         <property name="text">
-          <string>Provide the CRNs to be registered</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="1">
-        <widget class="QLineEdit" name="JAcrn10">
-         <property name="maxLength">
-          <number>5</number>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="2">
-        <widget class="QLineEdit" name="JAcrn3">
-         <property name="maxLength">
-          <number>5</number>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="3">
-        <widget class="QLineEdit" name="JAcrn12">
-         <property name="maxLength">
-          <number>5</number>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="2" colspan="2">
-        <widget class="QPushButton" name="automationButton">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="text">
-          <string>Start</string>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="0" colspan="2">
-        <widget class="QPushButton" name="clearAllButton">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="text">
-          <string>Clear</string>
          </property>
         </widget>
        </item>
@@ -343,9 +346,22 @@ If you also want registration to be automated, use one of the tabs labeled as &q
         <height>201</height>
        </rect>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout">
+      <layout class="QVBoxLayout" name="CAverticalLayout">
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0">
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This option will wait until there is an available seat in desired course, then will register provided CRNs.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="CAcheckHorizontalLayout" stretch="0,0">
          <property name="spacing">
           <number>-1</number>
          </property>
@@ -370,10 +386,13 @@ If you also want registration to be automated, use one of the tabs labeled as &q
          <property name="text">
           <string>Register the courses with the CRNs below</string>
          </property>
+         <property name="alignment">
+          <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+         </property>
         </widget>
        </item>
        <item>
-        <layout class="QGridLayout" name="gridLayout_2">
+        <layout class="QGridLayout" name="CAaddGridLayout">
          <item row="0" column="2">
           <widget class="QLineEdit" name="CAcrn3">
            <property name="maxLength">
@@ -433,7 +452,7 @@ If you also want registration to be automated, use one of the tabs labeled as &q
         </layout>
        </item>
        <item>
-        <widget class="QPushButton" name="conditionalEnrollButton">
+        <widget class="QPushButton" name="CAstartButton">
          <property name="enabled">
           <bool>false</bool>
          </property>
@@ -458,87 +477,98 @@ If you also want registration to be automated, use one of the tabs labeled as &q
         <height>201</height>
        </rect>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout_4">
+      <layout class="QVBoxLayout" name="DAverticalLayout" stretch="0,0,0,0,0">
+       <property name="leftMargin">
+        <number>5</number>
+       </property>
+       <property name="rightMargin">
+        <number>5</number>
+       </property>
        <item>
-        <widget class="QLabel" name="label_2">
+        <widget class="QLabel" name="DAdescription1">
          <property name="text">
-          <string>Drop these CRNs</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This option will drop the CRNs entered below&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
        <item>
-        <layout class="QGridLayout" name="gridLayout_4">
+        <layout class="QGridLayout" name="DAdropGridLayout">
          <item row="0" column="2">
-          <widget class="QLineEdit" name="lineEdit_3"/>
+          <widget class="QLineEdit" name="DAdropcrn3"/>
          </item>
          <item row="0" column="3">
-          <widget class="QLineEdit" name="lineEdit_4"/>
+          <widget class="QLineEdit" name="DAdropcrn4"/>
          </item>
          <item row="0" column="0">
-          <widget class="QLineEdit" name="lineEdit"/>
+          <widget class="QLineEdit" name="DAdropcrn1"/>
          </item>
          <item row="0" column="1">
-          <widget class="QLineEdit" name="lineEdit_2"/>
+          <widget class="QLineEdit" name="DAdropcrn2"/>
          </item>
          <item row="1" column="1">
-          <widget class="QLineEdit" name="lineEdit_5"/>
+          <widget class="QLineEdit" name="DAdropcrn6"/>
          </item>
          <item row="1" column="0">
-          <widget class="QLineEdit" name="lineEdit_6"/>
+          <widget class="QLineEdit" name="DAdropcrn5"/>
          </item>
          <item row="1" column="2">
-          <widget class="QLineEdit" name="lineEdit_7"/>
+          <widget class="QLineEdit" name="DAdropcrn7"/>
          </item>
          <item row="1" column="3">
-          <widget class="QLineEdit" name="lineEdit_8"/>
+          <widget class="QLineEdit" name="DAdropcrn8"/>
          </item>
         </layout>
        </item>
        <item>
-        <widget class="QLabel" name="label_3">
+        <widget class="QLabel" name="DAdescription2">
          <property name="text">
-          <string>Then add these CRNs</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;then add the CRNs entered below&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
        <item>
-        <layout class="QGridLayout" name="gridLayout_6">
-         <item row="0" column="0">
-          <widget class="QLineEdit" name="lineEdit_9"/>
-         </item>
-         <item row="1" column="0">
-          <widget class="QLineEdit" name="lineEdit_11"/>
-         </item>
+        <layout class="QGridLayout" name="DAaddGridLayout">
          <item row="0" column="2">
-          <widget class="QLineEdit" name="lineEdit_12"/>
-         </item>
-         <item row="0" column="1">
-          <widget class="QLineEdit" name="lineEdit_10"/>
-         </item>
-         <item row="0" column="3">
-          <widget class="QLineEdit" name="lineEdit_13"/>
+          <widget class="QLineEdit" name="DAaddcrn3"/>
          </item>
          <item row="1" column="1">
-          <widget class="QLineEdit" name="lineEdit_14"/>
+          <widget class="QLineEdit" name="DAaddcrn6"/>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLineEdit" name="DAaddcrn1"/>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLineEdit" name="DAaddcrn2"/>
+         </item>
+         <item row="0" column="3">
+          <widget class="QLineEdit" name="DAaddcrn4"/>
          </item>
          <item row="1" column="2">
-          <widget class="QLineEdit" name="lineEdit_15"/>
+          <widget class="QLineEdit" name="DAaddcrn7"/>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLineEdit" name="DAaddcrn5"/>
          </item>
          <item row="1" column="3">
-          <widget class="QLineEdit" name="lineEdit_16"/>
+          <widget class="QLineEdit" name="DAaddcrn8"/>
          </item>
         </layout>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_2">
-         <item>
-          <widget class="QPushButton" name="pushButton">
-           <property name="text">
-            <string>Start</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
+        <widget class="QPushButton" name="DAstartButton">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Start</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
