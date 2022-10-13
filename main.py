@@ -74,7 +74,6 @@ class MainWindow(QMainWindow):
         self.FEstartButton = self.findChild(QPushButton, "FEstartButton")
         self.FEstartButton.clicked.connect(self.FEautomate)
 
-
         #elements in JUST ADD (JA) tab
         self.JAstartButton = self.findChild(QPushButton, "JAstartButton")
         self.JAclearButton = self.findChild(QPushButton, "JAclearButton")
