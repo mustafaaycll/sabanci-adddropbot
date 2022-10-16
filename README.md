@@ -12,9 +12,10 @@
     - [Just Add, will get you to the Add/Drop page and add courses](#just-add-will-get-you-to-the-adddrop-page-and-add-courses)
     - [Check and Add, will get you to the Add/Drop page and add courses when there is space](#check-and-add-will-get-you-to-the-adddrop-page-and-add-courses-when-there-is-space)
     - [Drop and Add, will get you to the Add/Drop page and drop and add desired courses](#drop-and-add-will-get-you-to-the-adddrop-page-and-drop-and-add-desired-courses)
-  - [Detailed steps for compiling code on your own computer (Some steps are specific to macOS)](#detailed-steps-for-compiling-code-on-your-own-computer-some-steps-are-specific-to-macos)
+  - [Detailed steps for compiling code on your own Mac](#detailed-steps-for-compiling-code-on-your-own-mac)
     - [Step 1: Installing Dependencies for running the code](#step-1-installing-dependencies-for-running-the-code)
     - [Step 2: Installing Dependencies for packaging the code into executable](#step-2-installing-dependencies-for-packaging-the-code-into-executable)
+    - [Step 3: Create executable and installer](#step-3-create-executable-and-installer)
 
 
 ## Introduction
@@ -72,40 +73,41 @@ Using Google Chrome installed on your computer:
 ![](screenshots/8.png)
 
 
-## Detailed steps for compiling code on your own computer (Some steps are specific to macOS)
+## Detailed steps for compiling code on your own Mac
 
 ### Step 1: Installing Dependencies for running the code
 
-- (Mac specific) If not installed, install Homebrew. It will be used to install python and other python libraries. Even if Python is already installed, Homebrew will also be used to install another dependency.
+- If not installed, install Homebrew. It will be used to install python and other python libraries. Even if Python is already installed, Homebrew will also be used to install another dependency: `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
 
-    `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
-
-- (Mac specific) If not installed, install Python
-
-    `brew install python`
+- If not installed, install Python: `brew install python`
 
     Python can also be installed using the installer downloaded from the website. Using brew makes it easy to uninstall or update it.
 
-- Install Python packages
+- Install Python packages:
 
-    PyQt5, for GUI library
+  - PyQt5, for GUI library: `brew install pyqt@5` or `pip3 install PyQt5`
 
-    `brew install pyqt@5` or `pip3 install PyQt5`
-
-    Selenium and Webdriver Manager for browser automation
-
-    `pip3 install selenium webdriver-manager`
+  - Selenium and `webdriver-manager` for browser automation: `pip3 install selenium webdriver-manager`
 
 
 
 ### Step 2: Installing Dependencies for packaging the code into executable
 
-- PyInstaller, for packaging the app into one executable
+- PyInstaller, for packaging the app into one executable: `pip3 install pyinstaller`
 
-    `pip3 install pyinstaller`
+- `create-dmg`, for creating macOS disk images: `brew install create-dmg`
 
-- `create-dmg`, for creating macOS disk images
 
-    `brew install create-dmg`
+### Step 3: Create executable and installer
+
+- Open terminal and move to the directory where the code is.
+- run the command: `sudo sh makedmg.sh`
+- what it will do is
+  - to create a .spec file, named subot.spec, containing information about dependencies.
+  - using .spec file, to create an .app file which is the app itself
+  - to create a .dmg file containing the .app file, under the location ./dist
+
+
+
 
 
