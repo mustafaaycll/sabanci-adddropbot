@@ -7,7 +7,11 @@
   - [Installation & Usage](#installation--usage)
     - [Download the installer](#download-the-installer)
     - [Make sure you have Google Chrome installed](#make-sure-you-have-google-chrome-installed)
-    - [Provide your SUCourse username and password](#provide-your-sucourse-username-and-password)
+    - [Provide your SUCourse username and password, click on save button](#provide-your-sucourse-username-and-password-click-on-save-button)
+    - [Force Entry, will only get you to the Add/Drop page](#force-entry-will-only-get-you-to-the-adddrop-page)
+    - [Just Add, will get you to the Add/Drop page and add courses](#just-add-will-get-you-to-the-adddrop-page-and-add-courses)
+    - [Check and Add, will get you to the Add/Drop page and add courses when there is space](#check-and-add-will-get-you-to-the-adddrop-page-and-add-courses-when-there-is-space)
+    - [Drop and Add, will get you to the Add/Drop page and drop and add desired courses](#drop-and-add-will-get-you-to-the-adddrop-page-and-drop-and-add-desired-courses)
     -
 ## Introduction
 Course registration periods in Sabanci University can be painful, especially if you could not login in time due to high loads on servers and had to check for an available seat for an already full class for 5 days, by hand. subot is designed to eliminate and automate this time consuming process.
@@ -40,6 +44,25 @@ Using Google Chrome installed on your computer:
 - Bot, for now, uses Google Chrome 106.x
 - Any other Google Chrome, such as v105 or 107, will cause errors. To learn your Google Chrome version, head to the Google Chrome settings and click on the "About Chrome" button on the left pane.
 
-### Provide your SUCourse username and password
+### Provide your SUCourse username and password, click on save button
 
-![ ]("screenshots/1.png")
+![ ](screenshots/1.png)
+
+### Force Entry, will only get you to the Add/Drop page
+
+![](screenshots/2.png)
+
+### Just Add, will get you to the Add/Drop page and add courses
+
+![](screenshots/3.png)
+![](screenshots/4.png)
+
+### Check and Add, will get you to the Add/Drop page and add courses when there is space
+
+![](screenshots/5.png)
+![](screenshots/6.png)
+
+### Drop and Add, will get you to the Add/Drop page and drop and add desired courses
+
+![](screenshots/7.png)
+![](screenshots/8.png)
