@@ -1,4 +1,18 @@
 #!/bin/sh
+# Create a .spec file containing info about dependencies
+pyi-makespec main.py \
+  --onefile \
+  --noconsole \
+  --add-binary "./driver/chromedriver:driver" \
+  --add-data "./assets/logo.png:assets" \
+  --add-data "./assets/visibility_off.png:assets" \
+  --add-data "./assets/visibility_on.png:assets"  \
+  --add-data "./ui/main.ui:ui" \
+  --add-data "./ui/second.ui:ui" \
+  --name "subot" \
+  --icon "assets/subot.icns"
+# Create executable using the .spec file
+pyinstaller subot.spec
 # Create a folder (named dmg) to prepare our DMG in (if it doesn't already exist).
 mkdir -p dist/dmg
 # Empty the dmg folder.
@@ -9,7 +23,7 @@ cp -r "dist/subot.app" dist/dmg
 test -f "dist/subot.dmg" && rm "dist/subot.dmg"
 create-dmg \
   --volname "subot" \
-  --volicon "subot.icns" \
+  --volicon "assets/subot.icns" \
   --window-pos 200 120 \
   --window-size 600 300 \
   --icon-size 100 \

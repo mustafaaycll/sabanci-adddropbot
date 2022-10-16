@@ -1,3 +1,0 @@
-([('main',
-   '/Users/mustafayucel/Desktop/sabanci-adddropbot/dist/main',
-   'EXECUTABLE')],)
