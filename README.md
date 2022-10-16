@@ -69,6 +69,8 @@ Using Google Chrome installed on your computer:
 
 ### Drop and Add, will get you to the Add/Drop page and drop and add desired courses
 
+*CURRENTLY, IT IS NOT IMPLEMENTED*
+
 ![](screenshots/7.png)
 ![](screenshots/8.png)
 
