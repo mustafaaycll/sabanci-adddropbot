@@ -35,7 +35,7 @@ def findDriverPath():
         GB.DRIVERPATH = os.path.join(GB.BASEDIR, "driver", "chromedriver_arm")
         os.system("xattr -r -d com.apple.quarantine " + GB.DRIVERPATH)
     else:
-        GB.DRIVERPATH = os.path.join(GB.BASEDIR, "driver", "chromedriver_i386")
+        GB.DRIVERPATH = os.path.join(GB.BASEDIR, "driver", "chromedriver_x86_64")
         os.system("xattr -r -d com.apple.quarantine " + GB.DRIVERPATH)
 
 

@@ -16,7 +16,7 @@ else
   pyi-makespec main.py \
     --onefile \
     --noconsole \
-    --add-binary "./driver/chromedriver_i386:driver" \
+    --add-binary "./driver/chromedriver_x86_64:driver" \
     --add-data "./assets/logo.png:assets" \
     --add-data "./assets/visibility_off.png:assets" \
     --add-data "./assets/visibility_on.png:assets"  \
