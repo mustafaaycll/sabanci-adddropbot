@@ -11,11 +11,14 @@ Using Google Chrome installed on your computer:
 
 ## Built with
 
-- [Qt Creator](https://www.qt.io/product/development-tools) - Interface design
-- [PyQt5](https://pypi.org/project/PyQt5/) - GUI library
-- [Selenium](https://www.selenium.dev/documentation/) - Browser automation
+- [Python](https://www.python.org) - A powerful scripting language
+- [Qt Creator](https://www.qt.io/product/development-tools) - An app for interface design
+- [PyQt5](https://pypi.org/project/PyQt5/) - GUI library for Python
+- [Selenium](https://www.selenium.dev/documentation/) - A library for browser automation
+- [PyInstaller](https://pyinstaller.org/en/stable/) - A library for creating executable Python apps
 
 ## Installation
 
 - Click <a id="raw-url" href="https://raw.githubusercontent.com/mustafaaycll/sabanci-adddropbot/main/release_AppleSilicon/subot.dmg">here</a> if you use an ARM Mac (M1, M1 Pro, M1 Max, M2)
 - Click <a id="raw-url" href="https://raw.githubusercontent.com/mustafaaycll/sabanci-adddropbot/main/release_IntelSilicon/sorry.txt">here</a> if you use an Intel Mac
+- There is no MS Windows version, feel free to copy and modify the code to develop one.

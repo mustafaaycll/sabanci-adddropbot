@@ -1,16 +1,30 @@
 #!/bin/sh
 # Create a .spec file containing info about dependencies
-pyi-makespec main.py \
-  --onefile \
-  --noconsole \
-  --add-binary "./driver/chromedriver:driver" \
-  --add-data "./assets/logo.png:assets" \
-  --add-data "./assets/visibility_off.png:assets" \
-  --add-data "./assets/visibility_on.png:assets"  \
-  --add-data "./ui/main.ui:ui" \
-  --add-data "./ui/second.ui:ui" \
-  --name "subot" \
-  --icon "assets/subot.icns"
+if [[ $(uname -p) == 'arm' ]]; then
+  pyi-makespec main.py \
+    --onefile \
+    --noconsole \
+    --add-binary "./driver/chromedriver_arm:driver" \
+    --add-data "./assets/logo.png:assets" \
+    --add-data "./assets/visibility_off.png:assets" \
+    --add-data "./assets/visibility_on.png:assets"  \
+    --add-data "./ui/main.ui:ui" \
+    --add-data "./ui/second.ui:ui" \
+    --name "subot" \
+    --icon "assets/subot.icns"
+else
+  pyi-makespec main.py \
+    --onefile \
+    --noconsole \
+    --add-binary "./driver/chromedriver_i386:driver" \
+    --add-data "./assets/logo.png:assets" \
+    --add-data "./assets/visibility_off.png:assets" \
+    --add-data "./assets/visibility_on.png:assets"  \
+    --add-data "./ui/main.ui:ui" \
+    --add-data "./ui/second.ui:ui" \
+    --name "subot" \
+    --icon "assets/subot.icns"
+fi
 # Create executable using the .spec file
 pyinstaller subot.spec
 # Create a folder (named dmg) to prepare our DMG in (if it doesn't already exist).

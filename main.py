@@ -1,6 +1,7 @@
 import sys
 import os
 import time
+import subprocess
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
@@ -19,6 +20,23 @@ from PyQt5.QtWidgets import (
     QPushButton,
 )
 from PyQt5.QtGui import QIcon, QPixmap
+
+
+def systemIsARM():
+    processor = subprocess.check_output(['sysctl', '-n', 'machdep.cpu.brand_string']).decode('utf-8')
+    if "Apple M" in processor:
+        return True
+    return False
+
+
+def findDriverPath():
+# Locate proper chromedriver for your system and remove apple quarantine on it
+    if systemIsARM():
+        GB.DRIVERPATH = os.path.join(GB.BASEDIR, "driver", "chromedriver_arm")
+        os.system("xattr -r -d com.apple.quarantine " + GB.DRIVERPATH)
+    else:
+        GB.DRIVERPATH = os.path.join(GB.BASEDIR, "driver", "chromedriver_i386")
+        os.system("xattr -r -d com.apple.quarantine " + GB.DRIVERPATH)
 
 
 def createBrowser():
@@ -401,8 +419,9 @@ class MainWindow(QMainWindow):
         print("COLLECTED add crns: ", GB.CRNSTOADD)
 
 
-
 if __name__ == "__main__":
+    findDriverPath()
+
     app = QApplication(sys.argv)
 
     window = MainWindow()
