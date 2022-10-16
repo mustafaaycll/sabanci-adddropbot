@@ -17,4 +17,5 @@ Using Google Chrome installed on your computer:
 
 ## Installation
 
-<a id="raw-url" href="https://raw.githubusercontent.com/mustafaaycll/sabanci-adddropbot/main/release_AppleSilicon/subot.dmg">Download FILE</a>
+- Click <a id="raw-url" href="https://raw.githubusercontent.com/mustafaaycll/sabanci-adddropbot/main/release_AppleSilicon/subot.dmg">here</a> if you use an ARM Mac (M1, M1 Pro, M1 Max, M2)
+- Click <a id="raw-url" href="https://raw.githubusercontent.com/mustafaaycll/sabanci-adddropbot/main/release_IntelSilicon/sorry.txt">here</a> if you use an Intel Mac
