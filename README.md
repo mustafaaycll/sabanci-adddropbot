@@ -12,7 +12,11 @@
     - [Just Add, will get you to the Add/Drop page and add courses](#just-add-will-get-you-to-the-adddrop-page-and-add-courses)
     - [Check and Add, will get you to the Add/Drop page and add courses when there is space](#check-and-add-will-get-you-to-the-adddrop-page-and-add-courses-when-there-is-space)
     - [Drop and Add, will get you to the Add/Drop page and drop and add desired courses](#drop-and-add-will-get-you-to-the-adddrop-page-and-drop-and-add-desired-courses)
-    -
+  - [Detailed steps for compiling code on your own computer (Some steps are specific to macOS)](#detailed-steps-for-compiling-code-on-your-own-computer-some-steps-are-specific-to-macos)
+    - [Step 1: Installing Dependencies for running the code](#step-1-installing-dependencies-for-running-the-code)
+    - [Step 2: Installing Dependencies for packaging the code into executable](#step-2-installing-dependencies-for-packaging-the-code-into-executable)
+
+
 ## Introduction
 Course registration periods in Sabanci University can be painful, especially if you could not login in time due to high loads on servers and had to check for an available seat for an already full class for 5 days, by hand. subot is designed to eliminate and automate this time consuming process.
 
@@ -66,3 +70,42 @@ Using Google Chrome installed on your computer:
 
 ![](screenshots/7.png)
 ![](screenshots/8.png)
+
+
+## Detailed steps for compiling code on your own computer (Some steps are specific to macOS)
+
+### Step 1: Installing Dependencies for running the code
+
+- (Mac specific) If not installed, install Homebrew. It will be used to install python and other python libraries. Even if Python is already installed, Homebrew will also be used to install another dependency.
+
+    `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
+
+- (Mac specific) If not installed, install Python
+
+    `brew install python`
+
+    Python can also be installed using the installer downloaded from the website. Using brew makes it easy to uninstall or update it.
+
+- Install Python packages
+
+    PyQt5, for GUI library
+
+    `brew install pyqt@5` or `pip3 install PyQt5`
+
+    Selenium and Webdriver Manager for browser automation
+
+    `pip3 install selenium webdriver-manager`
+
+
+
+### Step 2: Installing Dependencies for packaging the code into executable
+
+- PyInstaller, for packaging the app into one executable
+
+    `pip3 install pyinstaller`
+
+- `create-dmg`, for creating macOS disk images
+
+    `brew install create-dmg`
+
+
