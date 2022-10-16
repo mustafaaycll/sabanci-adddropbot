@@ -105,9 +105,9 @@ Using Google Chrome installed on your computer:
 - Open terminal and move to the directory where the code is.
 - run the command: `sudo sh makedmg.sh`
 - what it will do is
-  - to create a .spec file, named subot.spec, containing information about dependencies.
-  - using .spec file, to create an .app file which is the app itself
-  - to create a .dmg file containing the .app file, under the location ./dist
+  - creating a .spec file, named subot.spec, containing information about dependencies.
+  - using the .spec file, creating an .app file which is the app itself
+  - creating a .dmg file containing the .app file, under the location ./dist
 
 
 
