@@ -8,6 +8,9 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from services import bannerWebServices as SU
 import globalVars as GB
+import chromedriver_autoinstaller
+import re
+import platform
 
 from PyQt5 import uic
 from PyQt5.QtCore import QTimer, QTime
@@ -20,6 +23,39 @@ from PyQt5.QtWidgets import (
     QPushButton,
 )
 from PyQt5.QtGui import QIcon, QPixmap
+
+
+def chromeExists():
+    system = platform.system()
+    if system == 'Windows':
+        install_paths = [
+            os.path.join(os.environ.get('LOCALAPPDATA', ''), 'Google', 'Chrome', 'Application'),
+            os.path.join(os.environ.get('PROGRAMFILES', ''), 'Google', 'Chrome', 'Application'),
+            os.path.join(os.environ.get('PROGRAMFILES(X86)', ''), 'Google', 'Chrome', 'Application')
+        ]
+        executables = ['chrome.exe']
+    elif system == 'Darwin':
+        install_paths = [
+            '/Applications/Google Chrome.app/Contents/MacOS',
+            os.path.expanduser('~/Applications/Google Chrome.app/Contents/MacOS')
+        ]
+        executables = ['Google Chrome']
+    elif system == 'Linux':
+        install_paths = [
+            '/usr/bin',
+            '/usr/local/bin',
+            os.path.expanduser('~/.local/bin')
+        ]
+        executables = ['google-chrome', 'chrome']
+    else:
+        raise OSError(f'Unsupported system: {system}')
+
+    for path in install_paths:
+        for executable in executables:
+            if os.path.exists(os.path.join(path, executable)):
+                return True
+
+    return False
 
 
 def systemIsARM():
@@ -44,7 +80,7 @@ def createBrowser():
     caps["pageLoadStrategy"] = "eager"
     options = Options()
     options.add_experimental_option("detach", True)
-    return webdriver.Chrome(service=Service(SU.resource_path(GB.DRIVERPATH)), desired_capabilities=caps, options=options)
+    return webdriver.Chrome(desired_capabilities=caps, options=options)
 
 
 class MainWindow(QMainWindow):
@@ -52,10 +88,27 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.setFixedSize(683, 249)
         self.timer = QTimer()
-
-        self.loadMainPage()
+        if chromeExists():
+            self.loadMainPage()
+        else:
+            self.loadChromeWarningPage()
         SU.identifyTerm()
 
+
+    def decidePageToBeLoaded(self):
+        if chromeExists():
+            self.loadMainPage()
+
+
+    def loadChromeWarningPage(self):
+        uic.loadUi(os.path.join(GB.BASEDIR, "ui", "no_chrome_warning.ui"), self)
+        self.imageInit = self.findChild(QLabel, "imageInit")
+        self.imageInit.setPixmap(QPixmap(os.path.join(GB.BASEDIR,"assets", "logo.png")))
+        self.imageChrome = self.findChild(QLabel, "imageChrome")
+        self.imageChrome.setPixmap(QPixmap(os.path.join(GB.BASEDIR,"assets", "chrome_warning_min.png")))
+
+        self.checkChromeButton = self.findChild(QPushButton, "checkChromeButton")
+        self.checkChromeButton.clicked.connect(self.decidePageToBeLoaded)
 
     def loadMainPage(self):
         self.deinitializeClock()
@@ -426,5 +479,4 @@ if __name__ == "__main__":
 
     window = MainWindow()
     window.show()
-
     app.exec()
