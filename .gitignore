@@ -1,2 +1,6 @@
 *.log
 *.pyc
+[0-9]*/
+build
+dist
+subot.spec

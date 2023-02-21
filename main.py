@@ -9,7 +9,6 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from services import bannerWebServices as SU
 import globalVars as GB
 import chromedriver_autoinstaller
-import re
 import platform
 
 from PyQt5 import uic
@@ -66,13 +65,8 @@ def systemIsARM():
 
 
 def findDriverPath():
-# Locate proper chromedriver for your system and remove apple quarantine on it
-    if systemIsARM():
-        GB.DRIVERPATH = os.path.join(GB.BASEDIR, "driver", "chromedriver_arm")
-        os.system("xattr -r -d com.apple.quarantine " + GB.DRIVERPATH)
-    else:
-        GB.DRIVERPATH = os.path.join(GB.BASEDIR, "driver", "chromedriver_x86_64")
-        os.system("xattr -r -d com.apple.quarantine " + GB.DRIVERPATH)
+    v = chromedriver_autoinstaller.get_chrome_version()
+    GB.DRIVERPATH = os.path.join(GB.BASEDIR, v[:v.find('.')], "chromedriver")
 
 
 def createBrowser():
@@ -80,13 +74,14 @@ def createBrowser():
     caps["pageLoadStrategy"] = "eager"
     options = Options()
     options.add_experimental_option("detach", True)
-    return webdriver.Chrome(desired_capabilities=caps, options=options)
+    return webdriver.Chrome(service=Service(SU.resource_path(GB.DRIVERPATH)), desired_capabilities=caps, options=options)
 
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setFixedSize(683, 249)
+        self.chromedriverInstalled = False
         self.timer = QTimer()
         if chromeExists():
             self.loadMainPage()
@@ -110,7 +105,13 @@ class MainWindow(QMainWindow):
         self.checkChromeButton = self.findChild(QPushButton, "checkChromeButton")
         self.checkChromeButton.clicked.connect(self.decidePageToBeLoaded)
 
+
     def loadMainPage(self):
+        if self.chromedriverInstalled == False:
+            findDriverPath()
+            chromedriver_autoinstaller.install(cwd=True)
+            self.chromedriverInstalled = True
+
         self.deinitializeClock()
         uic.loadUi(os.path.join(GB.BASEDIR, "ui", "main.ui"), self)
 
@@ -473,10 +474,7 @@ class MainWindow(QMainWindow):
 
 
 if __name__ == "__main__":
-    findDriverPath()
-
     app = QApplication(sys.argv)
-
     window = MainWindow()
     window.show()
     app.exec()

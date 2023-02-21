@@ -4,24 +4,26 @@ if [[ $(uname -p) == 'arm' ]]; then
   pyi-makespec main.py \
     --onefile \
     --noconsole \
-    --add-binary "./driver/chromedriver_arm:driver" \
     --add-data "./assets/logo.png:assets" \
     --add-data "./assets/visibility_off.png:assets" \
     --add-data "./assets/visibility_on.png:assets"  \
+    --add-data "./assets/chrome_warning_min.png:assets"  \
     --add-data "./ui/main.ui:ui" \
     --add-data "./ui/second.ui:ui" \
+    --add-data "./ui/no_chrome_warning.ui:ui" \
     --name "subot" \
     --icon "assets/subot.icns"
 else
   pyi-makespec main.py \
     --onefile \
     --noconsole \
-    --add-binary "./driver/chromedriver_x86_64:driver" \
     --add-data "./assets/logo.png:assets" \
     --add-data "./assets/visibility_off.png:assets" \
     --add-data "./assets/visibility_on.png:assets"  \
+    --add-data "./assets/chrome_warning_min.png:assets"  \
     --add-data "./ui/main.ui:ui" \
     --add-data "./ui/second.ui:ui" \
+    --add-data "./ui/no_chrome_warning.ui:ui" \
     --name "subot" \
     --icon "assets/subot.icns"
 fi
